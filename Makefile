@@ -2,4 +2,4 @@ env:
 	conda env create -f env.yml
 
 install:
-	pip install -e .
+	pip install -e .[dev]
