@@ -1,4 +1,7 @@
 # template
+![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/test.yml/badge.svg)
+[![codecov](https://codecov.io/gh/Komorebi-AI/python-template/branch/main/graph/badge.svg?token=DQXLBOUDPX)](https://codecov.io/gh/Komorebi-AI/python-template)
+
 A template for python repositories using `setup.py`, tests and usual workflows
 
 ## Components
