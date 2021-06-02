@@ -16,6 +16,7 @@ setup(
             "pip-tools",
             "pytest",
             "black",
+            "mypy"
         ]
     },
 )
