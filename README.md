@@ -1,6 +1,20 @@
 # template
 A template for python repositories using setup.py, tests and usual workflows
 
+## Components
+
+The repository is structured into the following directories:
+
+- template: where the python code is.
+- data: where the data files are (or their dvc pointers).
+- tests: python code for testing via pytest.
+
+Conveniently, a set of workflows via Github actions are already installed:
+
+- black: for code formatting everytime you push.
+- pytest: automatically runs tests/.
+- mypy: automatically runs type checking.
+
 ## Install dependencies
 
 - Conda: `conda env create -f env.yml`
