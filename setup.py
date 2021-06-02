@@ -14,8 +14,8 @@ setup(
     extras_require={
         "dev": [
             "pip-tools",
-            "pytest==6.2.3",
-            "black==20.8b1",
+            "pytest",
+            "black",
         ]
     },
 )
