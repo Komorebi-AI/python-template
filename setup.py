@@ -11,12 +11,5 @@ setup(
         "numpy",
         "typer",
     ],
-    extras_require={
-        "dev": [
-            "pip-tools",
-            "pytest",
-            "black",
-            "mypy"
-        ]
-    },
+    extras_require={"dev": ["pip-tools", "pytest", "black", "mypy"]},
 )
