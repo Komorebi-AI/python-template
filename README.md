@@ -11,7 +11,7 @@ If you already have the dependencies installed, you can update it to reflect the
 ## Add dependencies
 
 - Add abstract dependency to `setup.py`. If neccessary, add version requirements but try to be as flexible as possible
-- Update `requirements.txt`: `pip-compile --extra dev`
+- Update `requirements.txt`: `pip-compile --extra dev > requirements.txt`
 - Update environment: `pip-sync`
 
 ## Run tests
