@@ -17,14 +17,20 @@ Conveniently, a set of workflows via Github actions are already installed:
 
 ## Install dependencies
 
-- Conda: `conda env create -f env.yml`
+There are two options, depending on whether you use conda or not:
+
+- Conda: 
+  ```
+  conda env create -f env.yml
+  ```
+
 - Pip: 
   ```
   pip install -r requirements.txt
   pip install -e .[dev]
   ```
 
-If you already have the dependencies installed, you can update it to reflect the last version of the packages with `pip-sync`. The difference between conda and pip is that conda will create an isolated environment while pip will install all the dependencies in the current Python env. This might be a conda environment or any other Python env created by other tools.
+The difference between conda and pip is that conda will create an isolated environment while pip will install all the dependencies in the current Python env. This might be a conda environment or any other Python env created by other tools. If you already have the dependencies installed, you can update it to reflect the last version of the packages in the `requirements.txt` with `pip-sync`. 
 
 ## Add dependencies
 
