@@ -32,7 +32,13 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 Create isolated environment with required Python version. This can be done with conda or any other number of tools like venv:
 
 ```{bash}
-conda env create -n doraemon python=3.9
+conda env create -n template python=3.9
+```
+
+Then, activate the environment:
+
+```{bash}
+conda activate template
 ```
 
 Install dependencies:
