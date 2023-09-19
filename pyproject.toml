@@ -38,6 +38,7 @@ target-version = "py39"
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
 [tool.mypy]
+ignore_missing_imports = true
 python_version = "3.9"
 warn_return_any = true
 warn_unused_configs = true
