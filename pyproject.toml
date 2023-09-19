@@ -26,6 +26,7 @@ dependencies = { file = ["requirements.in"] }
 optional-dependencies.dev = { file = ["requirements-dev.in"] }
 
 [tool.setuptools_scm]
+# Importante crear esta sección vacia para activar el plugin
 
 [tool.black]
 line-length = 88
