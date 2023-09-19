@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+requires-python = ">=3.9,<3.10"
+name = "template"
+#version = "0.1.0"
+description = "Descripción breve"
+readme = "README.md"
+authors = [{ name = "Komorebi AI", email = "info@komorebi.ai" }]
+dynamic = ["version", "dependencies", "optional-dependencies"]
+
+[project.urls]
+homepage = "https://github.com/Komorebi-AI/python-template"
+
+[project.scripts]
+main = "template.main:main"
+
+[tool.setuptools]
+packages = ["template"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.in"] }
+optional-dependencies.dev = { file = ["requirements-dev.in"] }
+
+[tool.setuptools_scm]
+
+[tool.black]
+line-length = 88
+target-version = ['py39']
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.pytest.ini_options]
+filterwarnings = ["error", "ignore::DeprecationWarning"]
+
+[tool.mypy]
+ignore_missing_imports = true
+python_version = "3.9"
+warn_return_any = true
+warn_unused_configs = true
+packages = "template"
