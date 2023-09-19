@@ -34,7 +34,7 @@ Install a specific version of the package with `pip`
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 ```
 
-## Contribute
+## Installation
 
 Create isolated environment with required Python version. This can be done with conda or any other number of tools like venv:
 
@@ -60,7 +60,7 @@ Install package in editable mode:
 pip install -e .[dev]
 ```
 
-### Add new dependencies
+### Adding new dependencies
 
 The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If neccessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
 
