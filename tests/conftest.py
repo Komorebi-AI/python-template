@@ -1,5 +1,8 @@
 import pytest
 
+# Opcionalmentem se podría reemplazar esto por el plugin pytest-optional-tests
+# https://pypi.org/project/pytest-optional-tests/
+
 
 def pytest_addoption(parser):
     parser.addoption(
