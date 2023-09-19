@@ -7,6 +7,7 @@ try:
     __version__ = version("template")
 except PackageNotFoundError:
     # package is not installed
+    __version__ = None
     pass
 
 
