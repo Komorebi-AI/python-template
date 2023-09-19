@@ -36,10 +36,10 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 
 ## Installation
 
-Create isolated environment with required Python version. This can be done with conda or any other number of tools like venv:
+Create isolated environment with required Python version. This can be done with tools like venv or conda:
 
 ```{bash}
-conda env create -n python-template python=3.9
+conda create -n python-template python=3.9
 ```
 
 Then, activate the environment:
@@ -58,6 +58,12 @@ Install package in editable mode:
 
 ```{bash}
 pip install -e .[dev]
+```
+
+Alternatively, you can use the included `env.yml` file that performs all the previous steps:
+
+```{bash}
+conda env create -f env.yml
 ```
 
 ### Adding new dependencies
