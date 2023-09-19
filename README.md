@@ -13,11 +13,18 @@ The repository is structured into the following directories:
 - `/data`: required data
 - `/tests`: python code for testing via `pytest`.
 
-Conveniently, a set of workflows via Github actions are already installed:
+Conveniently, a set of workflows via Github Actions are already installed:
 
 - `black`: code formatting
 - `pytest`: automatically discover and runs tests in `tests/`
 - `mypy`: automatically runs type checking
+
+Tools:
+ - [black](https://github.com/psf/black)
+ - [ruff](https://docs.astral.sh/ruff/)
+ - [pytest](https://docs.pytest.org/)
+ - [pip-tools](https://github.com/jazzband/pip-tools)
+ - [mypy](https://mypy.readthedocs.io/)
 
 ## Installation
 
@@ -73,10 +80,7 @@ And:
 pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 ```
 
-Flag `-c` constraints the `dev` dependencies to be the same exact versions as the production dependencies.
-
-
-`pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` file.
+Flag `-c` constraints the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` file.
 
 ## Run tests
 
