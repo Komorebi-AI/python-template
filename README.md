@@ -22,9 +22,9 @@ Conveniently, a set of workflows via Github Actions are already installed:
 Tools:
  - [black](https://github.com/psf/black)
  - [ruff](https://docs.astral.sh/ruff/)
- - [pytest](https://docs.pytest.org/)
- - [pip-tools](https://github.com/jazzband/pip-tools)
  - [mypy](https://mypy.readthedocs.io/)
+ - [pytest](https://docs.pytest.org/en/)
+ - [pip-tools](https://github.com/jazzband/pip-tools)
 
 ## Installation
 
