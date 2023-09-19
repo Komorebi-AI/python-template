@@ -10,14 +10,14 @@ env:
 	conda env create -f env.yml
 
 activate: env
-	$(CONDA_ACTIVATE) template
+	$(CONDA_ACTIVATE) python-template
 
 install:
 	pip install -r requirements.txt
 	pip install -e .[dev]
 	
 compile:
-	pip-compile --extra dev
+	pip-compile --extra dev pyproject.toml
 
 sync:
 	pip-sync

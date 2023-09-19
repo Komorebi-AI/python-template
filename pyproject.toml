@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+requires-python = ">=3.9,<3.10"
+name = "template"
+version = "0.1.0"
+description = "Descripción breve"
+authors = [
+    {name = "Komorebi AI", email = "info@komorebi.ai"},
+]
+dynamic = ["dependencies", "optional-dependencies"]
+
+[tool.setuptools]
+packages = ["template"]
+
+[tool.setuptools.dynamic]
+dependencies = { file = ["requirements.in"] }
+optional-dependencies.dev = { file = ["requirements-dev.in"] }

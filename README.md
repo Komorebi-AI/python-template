@@ -32,13 +32,13 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 Create isolated environment with required Python version. This can be done with conda or any other number of tools like venv:
 
 ```{bash}
-conda env create -n template python=3.9
+conda env create -n python-template python=3.9
 ```
 
 Then, activate the environment:
 
 ```{bash}
-conda activate template
+conda activate python-template
 ```
 
 Install dependencies:
@@ -55,11 +55,26 @@ pip install -e .[dev]
 
 ### Add new dependencies
 
-The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `setup.py`. If neccessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
+The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If neccessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
 
 ```{bash}
-pip-compile --extra dev
+pip-compile --extra dev pyproject.toml
 ```
+
+If you want to pin separately production and dev dependencies you can use instead:
+
+```{bash}
+pip-compile
+```
+
+And:
+
+```{bash}
+pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
+```
+
+Flag `-c` constraints the `dev` dependencies to be the same exact versions as the production dependencies.
+
 
 `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` file.
 
