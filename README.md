@@ -34,7 +34,7 @@ Install a specific version of the package with `pip`
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 ```
 
-## Installation
+## Install dependencies
 
 Create isolated environment with required Python version. This can be done with tools like venv or conda:
 
