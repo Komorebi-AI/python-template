@@ -86,8 +86,8 @@ And:
 pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 ```
 
-Flag `-c` constraints the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` file.
+Flag `-c` constrains the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` file.
 
 ## Run tests
 
-- Run tests: `pytest`
+- Run tests: `python -m pytest`
