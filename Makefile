@@ -2,26 +2,27 @@
 .PHONY: all env install compile sync docker build run debug push
 
 SHELL=/bin/bash
-CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh ; conda activate ; conda activate
+CONDA_ACTIVATE=source $$(conda info --base)/etc/profile.d/conda.sh; conda activate; conda activate
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
 DOCKER_CONTAINER=template
 GH_USER=albertotb
 GH_TOKEN_FILE=/home/atorres/GITHUB_TOKEN.txt
 
-all: env activate install
+all: env install
 
 env:
-	conda env create -f env.yml
+	conda create -n python-template python=3.11
 
-activate: env
+activate: 
 	$(CONDA_ACTIVATE) python-template
 
 install:
-	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 	pip install -e .[dev]
 	
 compile:
-	pip-compile --extra dev pyproject.toml
+	pip-compile
+	pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 
 sync:
 	pip-sync
