@@ -1,0 +1,32 @@
+# See https://pre-commit.com for more information
+# See https://pre-commit.com/hooks.html for more hooks
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+        - id: check-added-large-files
+          args: [--maxkb=50000]
+        - id: check-executables-have-shebangs
+        - id: check-shebang-scripts-are-executable
+        - id: check-json
+          exclude: .vscode/settings.json
+        - id: check-toml
+        - id: check-yaml
+        - id: check-merge-conflict
+        - id: fix-encoding-pragma
+          args: [--remove]
+        - id: mixed-line-ending
+          args: [--fix=lf]
+        - id: trailing-whitespace
+        - id: pretty-format-json
+          args: [--autofix, --no-ensure-ascii]
+          exclude: .vscode/settings.json
+-   repo: https://github.com/psf/black
+    rev: 23.9.1
+    hooks:
+    -   id: black
+-   repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.0
+    hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix]
