@@ -13,20 +13,24 @@ all: env install
 env:
 	conda create -n python-template python=3.11
 
-activate: 
+activate:
 	$(CONDA_ACTIVATE) python-template
 
 install:
 	pip install -r requirements-dev.txt
 	pip install -e .[dev]
-	
+
 compile:
-	pip-compile
+	pip-compile pyproject.toml
 	pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 
 sync:
 	pip-sync
 	pip install -e .[dev]
+
+hooks:
+	pre-commit install
+	pre-commit run --all-files
 
 docker: build run
 

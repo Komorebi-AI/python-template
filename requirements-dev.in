@@ -2,3 +2,4 @@ pip-tools
 pytest
 black
 mypy
+pre-commit

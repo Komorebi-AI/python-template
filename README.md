@@ -26,6 +26,7 @@ Tools:
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
 - [pip-tools](https://github.com/jazzband/pip-tools)
+- [pre-commit](https://pre-commit.com/)
 
 ## Installation
 
@@ -59,6 +60,13 @@ Install package in editable mode:
 
 ```{bash}
 pip install -e .[dev]
+```
+
+Install and run pre-commit hooks:
+
+```{bash}
+pre-commit install
+pre-commit run --all-files
 ```
 
 Alternatively, you can use the included `env.yml` file that performs all the previous steps:
