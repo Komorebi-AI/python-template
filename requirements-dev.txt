@@ -13,7 +13,7 @@ anyio==3.7.1
     #   -c requirements.txt
     #   fastapi
     #   starlette
-black==23.9.1
+black==23.10.0
     # via template (pyproject.toml)
 build==1.0.3
     # via pip-tools
@@ -28,7 +28,7 @@ click==8.1.7
     #   uvicorn
 distlib==0.3.7
     # via virtualenv
-fastapi==0.103.2
+fastapi==0.104.0
     # via
     #   -c requirements.txt
     #   template (pyproject.toml)
@@ -46,7 +46,7 @@ idna==3.4
     #   anyio
 iniconfig==2.0.0
     # via pytest
-mypy==1.6.0
+mypy==1.6.1
     # via template (pyproject.toml)
 mypy-extensions==1.0.0
     # via
