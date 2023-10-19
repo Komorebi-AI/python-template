@@ -1,7 +1,6 @@
 name: pre-commit
 
 on:
-  pull_request:
   push:
     branches: [main]
 
@@ -17,6 +16,3 @@ jobs:
         with:
           python-version: '3.11'
       - uses: pre-commit/action@v3.0.0
-        with:
-          # Ejecutar solo en ficheros que hayan cambiado https://github.com/pre-commit/action/issues/7
-          extra_args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
