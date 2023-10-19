@@ -25,7 +25,7 @@ compile:
 	pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 
 sync:
-	pip-sync
+	pip-sync requirements-dev.txt
 	pip install -e .[dev]
 
 hooks:
