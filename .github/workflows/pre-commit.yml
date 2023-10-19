@@ -14,3 +14,6 @@ jobs:
         with:
           python-version: '3.11'
       - uses: pre-commit/action@v3.0.0
+        with:
+          # Ejecutar solo en ficheros que hayan cambiado
+          extra_args: --from-ref origin/HEAD --to-ref HEAD
