@@ -1,6 +1,6 @@
 # Template
 
-![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/test.yml/badge.svg)
+![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Komorebi-AI/python-template/branch/main/graph/badge.svg?token=DQXLBOUDPX)](https://codecov.io/gh/Komorebi-AI/python-template)
 
 Template for Python libraries
@@ -15,7 +15,7 @@ The repository is structured into the following directories:
 
 Conveniently, a set of workflows via Github Actions are already installed:
 
-- `black`: code formatting
+- `pre-commit`: run pre-commit hooks
 - `pytest`: automatically discover and runs tests in `tests/`
 - `mypy`: automatically runs type checking
 
