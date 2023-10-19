@@ -21,7 +21,7 @@ install:
 	pip install -e .[dev]
 
 compile:
-	pip-compile
+	pip-compile pyproject.toml
 	pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
 
 sync:
