@@ -1,18 +1,17 @@
 #!/usr/bin/env python
 from importlib.metadata import PackageNotFoundError, version
-from typing import Optional
 
 import typer
 
 try:
-    __version__: Optional[str] = version("template")
+    __version__: str | None = version("template")
 except PackageNotFoundError:
     # package is not installed
     __version__ = None
     pass
 
 
-def print_version():
+def print_version() -> None:
     print(f"Template version {__version__}")
 
 
