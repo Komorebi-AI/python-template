@@ -26,6 +26,7 @@ Tools:
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
 - [pip-tools](https://github.com/jazzband/pip-tools)
+- [pyupgrade](https://github.com/asottile/pyupgrade)
 - [pre-commit](https://pre-commit.com/)
 
 ## Installation
