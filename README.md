@@ -3,7 +3,7 @@
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
 [![codecov](https://codecov.io/gh/Komorebi-AI/python-template/branch/main/graph/badge.svg?token=DQXLBOUDPX)](https://codecov.io/gh/Komorebi-AI/python-template)
 
-Template for Python libraries
+Template for Python libraries. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
 
 ## Components
 
