@@ -87,7 +87,7 @@ pip-compile --extra dev pyproject.toml
 If you want to pin separately production and dev dependencies you can use instead:
 
 ```{bash}
-pip-compile
+pip-compile pyproject.toml
 ```
 
 And:
