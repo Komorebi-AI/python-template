@@ -70,10 +70,19 @@ pre-commit install
 pre-commit run --all-files
 ```
 
-Alternatively, you can use the included `env.yml` file that performs all the previous steps:
+Alternatively, you can use the included `env.yml` file that performs all the previous steps (except the pre-commit hooks):
 
 ```{bash}
 conda env create -f env.yml
+```
+
+or `make`
+
+```{bash}
+make env
+conda activate python-template
+make install
+make hooks
 ```
 
 ### Adding new dependencies
