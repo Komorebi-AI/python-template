@@ -87,7 +87,7 @@ make hooks
 
 ### Adding new dependencies
 
-The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If neccessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
+The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If necessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
 
 ```{bash}
 pip-compile --extra dev pyproject.toml
