@@ -59,7 +59,7 @@ addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
 [tool.mypy]
-packages = "template"
+files = "./template"
 strict = true
 warn_unreachable = true
 ignore_missing_imports = true

@@ -9,9 +9,9 @@ Template for Python libraries. The associated development guide can be found [he
 
 The repository is structured into the following directories:
 
- - `/doraemon`: Python source code
- - `/tests`: Python code for testing via pytest
- - `/data`: data folder
+- `/template`: Python source code
+- `/tests`: Python code for testing via pytest
+- `/data`: data folder
 
 Conveniently, a set of workflows via Github Actions are already installed:
 
