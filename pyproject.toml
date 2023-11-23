@@ -66,4 +66,5 @@ ignore_missing_imports = true
 python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
+allow_untyped_decorators = true
 enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
