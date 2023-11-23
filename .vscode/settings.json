@@ -7,6 +7,14 @@
             "source.organizeImports": true
         },
     },
+    "[markdown]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    }
+    "[yaml]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.formatOnSave": true
+    },
     "python.testing.pytestArgs": [
         "tests"
     ],
