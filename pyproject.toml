@@ -1,5 +1,5 @@
 [build-system]
-requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2", "wheel"]
+requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
@@ -35,13 +35,36 @@ target-version = ["py311"]
 [tool.ruff]
 line-length = 88
 target-version = "py311"
+lint.select = [
+    "E", # pycodestyle
+    "F", # Pyflakes
+    "UP", # pyupgrade
+    "B", # flake8-bugbear
+    "SIM", # flake8-simplify
+    "I", # isort
+    "C401",  # flake8-comprehensions: unnecessary-generator-set
+    "C402",  # flake8-comprehensions: unnecessary-generator-dict
+    "C403",  # flake8-comprehensions: unnecessary-list-comprehension-set
+    "C404",  # flake8-comprehensions: unnecessary-list-comprehension-dict
+    "C405",  # flake8-comprehensions: unnecessary-literal-set
+    "W605",  # pycodestyle: invalid-escape-sequence
+]
 
 [tool.pytest.ini_options]
+minversion = "7"
+testpaths = ["tests"]
+log_cli_level = "INFO"
+xfail_strict = true
+addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
 [tool.mypy]
+packages = "template"
+strict = true
+warn_unreachable = true
 ignore_missing_imports = true
 python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
-packages = "template"
+allow_untyped_decorators = true
+enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
