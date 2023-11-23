@@ -46,6 +46,12 @@ repos:
     hooks:
     -   id: mypy
         args: [--ignore-missing-imports]
+- repo: https://github.com/codespell-project/codespell
+  rev: v2.2.4
+  hooks:
+  - id: codespell
+    additional_dependencies:
+      - tomli
 -   repo: https://github.com/jazzband/pip-tools
     rev: 7.3.0
     hooks:
