@@ -11,11 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:  # https://github.com/stefanzweifel/git-auto-commit-action#checkout-the-correct-branch
-            ref: ${{ github.head_ref }}
+        with: # https://github.com/stefanzweifel/git-auto-commit-action#checkout-the-correct-branch
+          ref: ${{ github.head_ref }}
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - run: pip install black
       - run: black --check .
       - name: If needed, commit black changes to a new pull request

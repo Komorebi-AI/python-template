@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - uses: pre-commit/action@v3.0.0
         with:
           # Ejecutar solo en ficheros que hayan cambiado https://github.com/pre-commit/action/issues/7
