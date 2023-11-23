@@ -17,7 +17,6 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 - `pre-commit`: run pre-commit hooks
 - `pytest`: automatically discover and runs tests in `tests/`
-- `mypy`: automatically runs type checking
 
 Tools:
 
@@ -26,8 +25,9 @@ Tools:
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
 - [pip-tools](https://github.com/jazzband/pip-tools)
-- [pyupgrade](https://github.com/asottile/pyupgrade)
 - [pre-commit](https://pre-commit.com/)
+- [prettier](https://prettier.io/)
+- [codespell](https://github.com/codespell-project/codespell)
 
 ## Installation
 
@@ -111,7 +111,11 @@ Or simply:
 make compile
 ```
 
-Flag `-c` constrains the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` or `requirements-dev.txt` file.
+Flag `-c` constrains the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` or `requirements-dev.txt` file:
+
+```{bash}
+make sync
+```
 
 ## Run tests
 
