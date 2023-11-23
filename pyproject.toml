@@ -35,6 +35,20 @@ target-version = ["py311"]
 [tool.ruff]
 line-length = 88
 target-version = "py311"
+select = [
+    "E", # pycodestyle
+    "F", # Pyflakes
+    "UP", # pyupgrade
+    "B", # flake8-bugbear
+    "SIM", # flake8-simplify
+    "I", # isort
+    "C401",  # flake8-comprehensions: unnecessary-generator-set
+    "C402",  # flake8-comprehensions: unnecessary-generator-dict
+    "C403",  # flake8-comprehensions: unnecessary-list-comprehension-set
+    "C404",  # flake8-comprehensions: unnecessary-list-comprehension-dict
+    "C405",  # flake8-comprehensions: unnecessary-literal-set
+    "W605",  # pycodestyle: invalid-escape-sequence
+]
 
 [tool.pytest.ini_options]
 minversion = "7"
