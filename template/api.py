@@ -7,6 +7,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root() -> dict[str, str]:
+    """Check API version."""
     return {"template-api": f"version {__version__}"}
 
 

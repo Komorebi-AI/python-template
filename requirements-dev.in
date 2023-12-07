@@ -1,5 +1,5 @@
 pip-tools
 pytest
-black
+ruff
 mypy
 pre-commit
