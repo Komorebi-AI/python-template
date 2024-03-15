@@ -20,7 +20,7 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
-- [black](https://github.com/psf/black)
+
 - [ruff](https://docs.astral.sh/ruff/)
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
