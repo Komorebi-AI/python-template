@@ -20,7 +20,6 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
-
 - [ruff](https://docs.astral.sh/ruff/)
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
