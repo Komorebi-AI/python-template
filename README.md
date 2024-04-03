@@ -25,7 +25,7 @@ Tools:
 - [ruff](https://docs.astral.sh/ruff/)
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
-- [pip-tools](https://github.com/jazzband/pip-tools)
+- [uv](https://github.com/astral-sh/uv)
 - [pre-commit](https://pre-commit.com/)
 - [prettier](https://prettier.io/)
 - [codespell](https://github.com/codespell-project/codespell)
@@ -38,12 +38,12 @@ Install a specific version of the package with `pip`
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 ```
 
-## Install dependencies
+## Setup development environment
 
-Create isolated environment with required Python version. This can be done with tools like venv or conda:
+Create isolated environment with required Python version. This assumes that you have `conda` installed ([see instructions](https://github.com/Komorebi-AI/docs/blob/main/install_conda.md)):
 
 ```{bash}
-conda create -n python-template python=3.9
+make env
 ```
 
 Then, activate the environment:
@@ -55,34 +55,12 @@ conda activate python-template
 Install dependencies:
 
 ```{bash}
-pip install -r requirements.txt
-```
-
-Install package in editable mode:
-
-```{bash}
-pip install -e .[dev]
+make install
 ```
 
 Install and run pre-commit hooks:
 
 ```{bash}
-pre-commit install
-pre-commit run --all-files
-```
-
-Alternatively, you can use the included `env.yml` file that performs all the previous steps (except the pre-commit hooks):
-
-```{bash}
-conda env create -f env.yml
-```
-
-or `make`
-
-```{bash}
-make env
-conda activate python-template
-make install
 make hooks
 ```
 
@@ -91,33 +69,29 @@ make hooks
 The `requirements.txt` is generated automatically with `pip-tools` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If necessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
 
 ```{bash}
-pip-compile --extra dev pyproject.toml
-```
-
-If you want to pin separately production and dev dependencies you can use instead:
-
-```{bash}
-pip-compile pyproject.toml
-```
-
-And:
-
-```{bash}
-pip-compile --extra dev -o requirements-dev.txt -c requirements.txt pyproject.toml
-```
-
-Or simply:
-
-```{bash}
 make compile
 ```
 
-Flag `-c` constrains the `dev` dependencies to be the same exact versions as the production dependencies. `pip-tools` also has a `pip-sync` command to make sure that the local environment is in sync with the `requirements.txt` or `requirements-dev.txt` file:
+Sync the local environment with the `requirements-dev.txt` file:
 
 ```{bash}
 make sync
 ```
 
+## Run linter and formatter
+
+```{bash}
+make ruff
+```
+
 ## Run tests
 
-- Run tests: `python -m pytest`
+```{bash}
+make test
+```
+
+## Run type checker
+
+```{bash}
+make mypy
+```

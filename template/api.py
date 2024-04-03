@@ -5,7 +5,7 @@ from template.main import __version__
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/")  # type:ignore[misc]
 def read_root() -> dict[str, str]:
     """Check API version."""
     return {"template-api": f"version {__version__}"}
