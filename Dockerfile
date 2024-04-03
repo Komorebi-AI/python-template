@@ -10,7 +10,8 @@ ENV PIP_ROOT_USER_ACTION=ignore \
     PIP_DISABLE_PIP_VERSION_CHECK=1 \
     PIP_NO_CACHE_DIR=1
 
-RUN pip install -r /code/requirements.txt
+RUN pip install uv
+RUN uv pip install --system --no-cache -r /code/requirements.txt
 
 COPY ./template /code/template
 COPY ./pyproject.toml /code/pyproject.toml
