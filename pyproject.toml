@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-requires-python = ">=3.11,<3.12"
+requires-python = ">=3.9,<3.12"
 name = "template"
 # La versión se obtiene automáticamente de git con `setuptools_scm`
 #version = "0.1.0"
@@ -30,7 +30,6 @@ optional-dependencies.dev = { file = ["requirements-dev.in"] }
 
 [tool.ruff]
 line-length = 88
-target-version = "py311"
 [tool.ruff.lint]
 select = [
     "E", # pycodestyle
