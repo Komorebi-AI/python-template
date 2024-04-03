@@ -40,7 +40,7 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 
 ## Setup development environment
 
-Create isolated environment with required Python version. This assumes that you have `conda` installed ([see instructions](https://github.com/Komorebi-AI/docs/blob/main/install_conda.md)):
+Create isolated environment with required Python version. This assumes that you have `conda` installed ([see instructions](https://docs.anaconda.com/free/miniconda/)):
 
 ```{bash}
 make env
