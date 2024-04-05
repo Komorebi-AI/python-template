@@ -30,8 +30,8 @@ hooks:
 	pre-commit run --all-files
 
 ruff:
-	ruff check .
 	ruff format .
+	ruff check --fix --show-fixes .
 
 test:
 	python -m pytest
