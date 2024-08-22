@@ -18,5 +18,10 @@ def print_version() -> None:
     print(f"Template version {__version__}")
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Run typer and exit."""
     typer.run(print_version)
+
+
+if __name__ == "__main__":
+    main()

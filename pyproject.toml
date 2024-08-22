@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-requires-python = ">=3.9,<3.12"
+requires-python = ">=3.9,<3.13"
 name = "template"
 # La versión se obtiene automáticamente de git con `setuptools_scm`
 #version = "0.1.0"
