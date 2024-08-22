@@ -6,7 +6,7 @@ RUN  apt-get -yq update && apt-get -yqq install ssh git
 COPY --from=ghcr.io/astral-sh/uv:0.3.1 /uv /bin/uv
 
 # Copy the project into the image
-ADD . /app
+COPY . /app
 WORKDIR /app
 
 # Sync the project into a new environment
