@@ -10,7 +10,15 @@ name = "template"
 description = "Librería Python de ejemplo"
 readme = "README.md"
 authors = [{ name = "Komorebi AI", email = "info@komorebi.ai" }]
-dynamic = ["version", "dependencies", "optional-dependencies"]
+dynamic = ["version"]
+dependencies = [
+    "matplotlib",
+    "pandas",
+    "numpy",
+    "typer",
+    "fastapi",
+    "uvicorn",
+]
 
 [project.urls]
 homepage = "https://github.com/Komorebi-AI/python-template"
@@ -20,10 +28,6 @@ main = "template.main:main"
 
 [tool.setuptools]
 packages = ["template"]
-
-[tool.setuptools.dynamic]
-dependencies = { file = ["requirements.in"] }
-optional-dependencies.dev = { file = ["requirements-dev.in"] }
 
 [tool.setuptools_scm]
 # Importante crear esta sección vacia para activar el plugin
@@ -74,5 +78,13 @@ log_cli_level = "INFO"
 xfail_strict = true
 addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
+
+[tool.uv]
+dev-dependencies = [
+    "pytest",
+    "ruff",
+    "mypy",
+    "pre-commit",
+]
 
 

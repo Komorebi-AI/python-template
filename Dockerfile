@@ -1,24 +1,15 @@
-# From https://fastapi.tiangolo.com/deployment/docker/
 FROM python:3.11-slim
 
-#RUN  apt-get -yq update && apt-get -yqq install ssh git
+RUN  apt-get -yq update && apt-get -yqq install ssh git
 
-WORKDIR /code
-COPY ./requirements.txt /code/requirements.txt
+# From https://docs.astral.sh/uv/guides/integration/docker/
+COPY --from=ghcr.io/astral-sh/uv:0.3.1 /uv /bin/uv
 
-ENV PIP_ROOT_USER_ACTION=ignore \
-    PIP_DISABLE_PIP_VERSION_CHECK=1 \
-    PIP_NO_CACHE_DIR=1
+# Copy the project into the image
+ADD . /app
+WORKDIR /app
 
-RUN pip install uv
-RUN uv pip install --system --no-cache -r /code/requirements.txt
+# Sync the project into a new environment
+RUN --mount=source=.git,target=.git,type=bind uv sync --no-dev --no-cache
 
-COPY ./template /code/template
-COPY ./pyproject.toml /code/pyproject.toml
-
-# Solo necesario si queremos instalar la librería y obtener la version
-# automaticamente. Ver: https://pypi.org/project/setuptools-scm/
-#RUN --mount=source=.git,target=.git,type=bind \
-#    pip install -e .
-
-CMD ["uvicorn", "template.api:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uv", "run", "uvicorn", "template.api:app", "--host", "0.0.0.0", "--port", "80"]

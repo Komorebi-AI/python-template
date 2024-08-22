@@ -22,10 +22,10 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
+- [uv](https://docs.astral.sh/uv/)
 - [ruff](https://docs.astral.sh/ruff/)
 - [mypy](https://mypy.readthedocs.io/)
 - [pytest](https://docs.pytest.org/en/)
-- [uv](https://github.com/astral-sh/uv)
 - [pre-commit](https://pre-commit.com/)
 - [prettier](https://prettier.io/)
 - [codespell](https://github.com/codespell-project/codespell)
@@ -40,42 +40,46 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 
 ## Setup development environment
 
-Create isolated environment with required Python version. This assumes that you have `conda` installed ([see instructions](https://docs.anaconda.com/free/miniconda/)):
-
-```{bash}
-make env
-```
-
-Then, activate the environment:
-
-```{bash}
-conda activate python-template
-```
-
-Install dependencies:
+Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and pre-commit hooks:
 
 ```{bash}
 make install
 ```
 
-Install and run pre-commit hooks:
-
-```{bash}
-make hooks
-```
+`uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies).
 
 ### Adding new dependencies
 
-The `requirements.txt` is generated automatically with `uv` and it should not be edited manually. Add abstract dependencies to `requirements.in` and `requirements-dev.in`. If necessary, add version requirements but try to be as flexible as possible. Then, update the `requirements.txt` file with:
+Add dependencies with:
 
 ```{bash}
-make compile
+uv add <PACKAGE>
 ```
 
-Sync the local environment with the `requirements-dev.txt` file:
+Add dev dependencies with:
+
+```{bash}
+uv add --dev <PACKAGE>
+```
+
+Remove dependency with:
+
+```{bash}
+uv remove <PACKAGE>
+```
+
+In all cases `uv` will automatically update the `uv.lock` file and sync the virtual environment. This can also be done manually with:
 
 ```{bash}
 make sync
+```
+
+## Run pre-commit hooks
+
+Hooks are run on modified files before any commit. To run them manually on all files use:
+
+```{bash}
+make hooks
 ```
 
 ## Run linter and formatter
