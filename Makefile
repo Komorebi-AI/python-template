@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install compile sync hooks hooks-update ruff test mypy docker build run debug push
+.PHONY: install hooks hooks-update ruff test mypy docker build run debug push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -10,12 +10,6 @@ GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 install:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 	uv run pre-commit install
-
-compile:
-	uv lock
-
-sync:
-	uv sync
 
 hooks:
 	uv run pre-commit run --all-files

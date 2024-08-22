@@ -85,6 +85,7 @@ dev-dependencies = [
     "ruff",
     "mypy",
     "pre-commit",
+    "ipykernel",
 ]
 
 

@@ -32,13 +32,29 @@ Tools:
 
 ## Installation
 
-Install a specific version of the package with `pip`
+Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/uv/) package manager:
+
+1. Install `uv`. See instructions for Windows, Linux or MacOS [here](https://docs.astral.sh/uv/getting-started/installation/).
+
+2. Install package and dependencies in a virtual environment:
+
+   ```{bash}
+   uv sync
+   ```
+
+3. Run any command or Python script with `uv run`, for instance:
+
+   ```{bash}
+   uv run template/main.py
+   ```
+
+Install a specific version of the package with `pip` or `uv pip`:
 
 ```{bash}
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 ```
 
-## Setup development environment
+## Setup development environment (Unix)
 
 Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and pre-commit hooks:
 
@@ -71,7 +87,7 @@ uv remove <PACKAGE>
 In all cases `uv` will automatically update the `uv.lock` file and sync the virtual environment. This can also be done manually with:
 
 ```{bash}
-make sync
+uv sync
 ```
 
 ## Run pre-commit hooks
