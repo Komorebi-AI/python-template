@@ -23,7 +23,9 @@ jobs:
         run: curl -LsSf https://astral.sh/uv/0.3.1/install.sh | sh
       - name: Install dependencies
         run: uv sync --dev --frozen
-      - run: echo "$PWD/.venv/bin" >> $GITHUB_PATH
+      - run: |
+          echo "$PWD/.venv/bin" >> $GITHUB_PATH
+          uv pip install pip
       - uses: pre-commit/action@v3.0.1
         with:
           # Ejecutar solo en ficheros que hayan cambiado https://github.com/pre-commit/action/issues/7
