@@ -12,12 +12,10 @@ readme = "README.md"
 authors = [{ name = "Komorebi AI", email = "info@komorebi.ai" }]
 dynamic = ["version"]
 dependencies = [
-    "matplotlib",
     "pandas",
-    "numpy",
-    "typer",
     "fastapi",
     "uvicorn",
+    "typer-slim",
 ]
 
 [project.urls]
