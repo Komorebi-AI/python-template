@@ -22,13 +22,14 @@ COPY uv.lock /app/uv.lock
 COPY pyproject.toml /app/pyproject.toml
 
 # Install dependencies
-RUN uv sync --frozen --no-install-project
+RUN uv sync --frozen --no-dev --no-install-project
 
 # Copy the project into the image
 COPY . /app
 
 # Sync the project into a new environment
 # Mounting the git directory is required by setuptools_scm: https://setuptools-scm.readthedocs.io/en/stable/usage/
-RUN --mount=source=.git,target=.git,type=bind uv sync --frozen --no-dev --no-cache
+RUN --mount=source=.git,target=.git,type=bind \
+    uv sync --frozen --no-dev
 
 CMD ["uv", "run", "uvicorn", "template.api:app", "--host", "0.0.0.0", "--port", "80"]
