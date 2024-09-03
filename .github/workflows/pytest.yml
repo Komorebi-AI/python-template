@@ -32,12 +32,4 @@ jobs:
       - name: Test with pytest
         run: |
           uv sync --dev --frozen
-          uv pip install pytest-cov
-          uv run pytest --cov=./ --cov-report=xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          name: codecov-umbrella
-          fail_ci_if_error: false
-          verbose: true
+          uv run pytest
