@@ -7,7 +7,7 @@
 
 Template for Python libraries. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
 
-## Components
+## Structure
 
 The repository is structured into the following directories:
 
@@ -32,21 +32,27 @@ Tools:
 
 ## Installation
 
+### Application
+
 Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/uv/) package manager:
 
 1. Install `uv`. See instructions for Windows, Linux or MacOS [here](https://docs.astral.sh/uv/getting-started/installation/).
 
-2. Install package and dependencies in a virtual environment:
+2. Clone repository
+
+3. Install package and dependencies in a virtual environment:
 
    ```{bash}
    uv sync
    ```
 
-3. Run any command or Python script with `uv run`, for instance:
+4. Run any command or Python script with `uv run`, for instance:
 
    ```{bash}
    uv run template/main.py
    ```
+
+### Library
 
 Install a specific version of the package with `pip` or `uv pip`:
 
@@ -62,7 +68,7 @@ Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and pre-
 make install
 ```
 
-`uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies).
+`uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies). It will also install the package in editable mode.
 
 ### Adding new dependencies
 
