@@ -4,7 +4,7 @@
 [![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
-Template for Python libraries. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
+Template for Python libraries and applications with Docker packaging. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
 
 ## Structure
 
@@ -51,6 +51,12 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
    uv run template/main.py
    ```
 
+   Alternatively, you can also activate the virtual env and run the scripts normally:
+
+   ```{bash}
+   source .venv/bin/activate
+   ```
+
 ### Library
 
 Install a specific version of the package with `pip` or `uv pip`:
@@ -95,7 +101,9 @@ In all cases `uv` will automatically update the `uv.lock` file and sync the virt
 uv sync
 ```
 
-## Run pre-commit hooks
+### Tools
+
+#### Run pre-commit hooks
 
 Hooks are run on modified files before any commit. To run them manually on all files use:
 
@@ -103,19 +111,19 @@ Hooks are run on modified files before any commit. To run them manually on all f
 make hooks
 ```
 
-## Run linter and formatter
+#### Run linter and formatter
 
 ```{bash}
 make ruff
 ```
 
-## Run tests
+#### Run tests
 
 ```{bash}
 make test
 ```
 
-## Run type checker
+#### Run type checker
 
 ```{bash}
 make mypy
