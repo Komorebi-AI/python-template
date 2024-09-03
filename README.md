@@ -21,13 +21,13 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
-- [uv](https://docs.astral.sh/uv/)
-- [ruff](https://docs.astral.sh/ruff/)
-- [mypy](https://mypy.readthedocs.io/)
-- [pytest](https://docs.pytest.org/en/)
-- [pre-commit](https://pre-commit.com/)
-- [prettier](https://prettier.io/)
-- [codespell](https://github.com/codespell-project/codespell)
+- [uv](https://docs.astral.sh/uv/): manage dependencies, python versions and virtual environments
+- [ruff](https://docs.astral.sh/ruff/): lint and format Python code
+- [mypy](https://mypy.readthedocs.io/): check types
+- [pytest](https://docs.pytest.org/en/): run unit tests
+- [pre-commit](https://pre-commit.com/): manage pre-commit hooks
+- [prettier](https://prettier.io/): format YAML and Markdown
+- [codespell](https://github.com/codespell-project/codespell): check spelling in source code
 
 ## Installation
 
