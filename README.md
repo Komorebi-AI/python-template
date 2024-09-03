@@ -21,7 +21,7 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
-- [uv](https://docs.astral.sh/uv/): manage dependencies, python versions and virtual environments
+- [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
 - [ruff](https://docs.astral.sh/ruff/): lint and format Python code
 - [mypy](https://mypy.readthedocs.io/): check types
 - [pytest](https://docs.pytest.org/en/): run unit tests
