@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: env install compile sync hooks ruff test mypy docker build run debug push
+.PHONY: install hooks hooks-update ruff test mypy docker build run debug push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -7,37 +7,25 @@ DOCKER_CONTAINER=template
 GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 
-env:
-	conda create -n python-template python=3.11
-
 install:
-	pip install uv
-	uv pip install -r requirements-dev.txt
-	uv pip install -e .[dev]
-
-compile:
-	pip install uv
-	uv pip compile -o requirements.txt requirements.in
-	uv pip compile -o requirements-dev.txt -c requirements.txt requirements.in requirements-dev.in
-
-sync:
-	pip install uv
-	uv pip sync requirements-dev.txt
-	uv pip install -e .[dev]
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+	uv run pre-commit install
 
 hooks:
-	pre-commit install
-	pre-commit run --all-files
+	uv run pre-commit run --all-files
+
+hooks-update:
+	uv run pre-commit autoupdate
 
 ruff:
-	ruff format .
-	ruff check --fix --show-fixes .
+	uv run ruff format .
+	uv run ruff check --fix --show-fixes .
 
 test:
-	python -m pytest
+	uv run pytest
 
 mypy:
-	mypy --install-types --non-interactive
+	uv run mypy --install-types --non-interactive
 
 docker: build run
 
@@ -47,7 +35,7 @@ build:
 # https://stackoverflow.com/questions/26564825/what-is-the-meaning-of-a-double-dollar-sign-in-bash-makefile
 run:
 	[ "$$(docker ps -a | grep $(DOCKER_CONTAINER))" ] && docker stop $(DOCKER_CONTAINER) && docker rm $(DOCKER_CONTAINER)
-	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 80:80 $(DOCKER_IMG_NAME)
+	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 5000:80 $(DOCKER_IMG_NAME)
 
 debug:
 	docker run -it $(DOCKER_IMG_NAME) /bin/bash

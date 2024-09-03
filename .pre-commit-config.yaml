@@ -1,14 +1,11 @@
 # See https://pre-commit.com for more information
 # See https://pre-commit.com/hooks.html for more hooks
-default_language_version:
-  python: python3.11
-
 ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.6.0
     hooks:
       - id: check-added-large-files
         args: [--maxkb=50000]
@@ -32,7 +29,7 @@ repos:
     hooks:
       - id: python-use-type-annotations
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.0
+    rev: v0.6.1
     hooks:
       - id: ruff
         types_or: [python, pyi, jupyter]
@@ -40,42 +37,24 @@ repos:
       - id: ruff-format
         types_or: [python, pyi, jupyter]
   - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.6.1
+    rev: v1.11.1
     hooks:
       - id: mypy
+        language: system
         args: ["--install-types", "--non-interactive"]
-        additional_dependencies: [numpy]
         # Esto tiene la desventaja de que siempre se va a ejecutar mypy
         # sobre todos los ficheros del repo (incluidos en la conf de mypy)
         # Se puede sustituir por `files:`
         # Ref: https://www.kianmeng.org/2022/09/excluding-files-with-mypy-hook-for-pre.html
         pass_filenames: false
   - repo: https://github.com/codespell-project/codespell
-    rev: v2.2.4
+    rev: v2.3.0
     hooks:
       - id: codespell
         additional_dependencies:
           - tomli
   - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+    rev: v4.0.0-alpha.8
     hooks:
       - id: prettier
         types_or: [markdown, yaml]
-  - repo: https://github.com/astral-sh/uv-pre-commit
-    rev: 0.1.28
-    hooks:
-      - id: pip-compile
-        name: pip-compile requirements.in
-        args: [-o, requirements.txt, requirements.in]
-      - id: pip-compile
-        name: pip-compile requirements-dev.in
-        args:
-          [
-            -o,
-            requirements-dev.txt,
-            -c,
-            requirements.txt,
-            requirements.in,
-            requirements-dev.in,
-          ]
-        files: ^(requirements\.(in|txt)|requirements-dev\.(in|txt))$
