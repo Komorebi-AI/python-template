@@ -21,7 +21,7 @@ Conveniently, a set of workflows via Github Actions are already installed:
 
 Tools:
 
-- [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
+- [pixi](https://pixi.sh/latest/): manage dependencies, Python versions and virtual environments
 - [ruff](https://docs.astral.sh/ruff/): lint and format Python code
 - [mypy](https://mypy.readthedocs.io/): check types
 - [pytest](https://docs.pytest.org/en/): run unit tests
@@ -33,9 +33,9 @@ Tools:
 
 ### Application
 
-Install package and pinned dependencies with the [`pixi`](https://docs.astral.sh/uv/) package manager:
+Install package and pinned dependencies with the [`pixi`](https://pixi.sh/latest/) package manager:
 
-1. Install `pixi`. See instructions for Windows, Linux or MacOS [here](https://pixi.sh/dev/).
+1. Install `pixi`. See instructions for Windows, Linux or MacOS [here](https://pixi.sh/latest/).
 
 2. Clone repository
 
@@ -59,7 +59,7 @@ Install package and pinned dependencies with the [`pixi`](https://docs.astral.sh
 
 ### Library
 
-Install a specific version of the package with `pip` or `uv pip`:
+Install a specific version of the package with `pip`:
 
 ```{bash}
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
@@ -120,30 +120,10 @@ pixi install
 
 ### Tools
 
-#### Run pre-commit hooks
-
-Hooks are run on modified files before any commit. To run them manually on all files use:
+Tools are set both in the `Makefile` and also as `pixi` tasks. They can be run using either `make <ALIAS>` or `pixi run -e dev <ALIAS>`, for example:
 
 ```{bash}
-make hooks
-```
-
-or
-
-```{bash}
-pixi run -e dev hooks
-```
-
-#### Run linter and formatter
-
-```{bash}
-make ruff
-```
-
-or
-
-```{bash}
-pixi run -e dev ruff
+pixi run -e dev test
 ```
 
 #### Run tests
@@ -152,10 +132,10 @@ pixi run -e dev ruff
 make test
 ```
 
-or
+#### Run linter and formatter
 
 ```{bash}
-pixi run -e dev test
+make ruff
 ```
 
 #### Run type checker
@@ -164,8 +144,10 @@ pixi run -e dev test
 make mypy
 ```
 
-or
+#### Run pre-commit hooks
+
+Hooks are run on modified files before any commit. To run them manually on all files use:
 
 ```{bash}
-pixi run -e dev mypy
+make hooks
 ```
