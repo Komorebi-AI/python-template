@@ -22,5 +22,5 @@ jobs:
           cache: true
           environments: dev
           activate-environment: true
-      - run: pixi add --no-lockfile-update pip
+      - run: pixi add -e dev --no-lockfile-update pip
       - uses: pre-commit/action@v3.0.1
