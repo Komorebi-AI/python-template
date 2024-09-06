@@ -7,6 +7,12 @@ DOCKER_CONTAINER=template
 GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 
+# Install uv, pre-commit hooks and dependencies
+# Note that `uv run` has an implicit `uv sync`, since it will (if necessary):
+# - Download an install Python
+# - Create a virtual environment
+# - Update `uv.lock`
+# - Sync the virtual env, installing and removing dependencies as required
 install:
 	curl -LsSf https://astral.sh/uv/install.sh | sh
 	uv run pre-commit install
