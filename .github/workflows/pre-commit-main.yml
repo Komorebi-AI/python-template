@@ -16,14 +16,9 @@ jobs:
         with:
           # required to grab the history of the PR
           fetch-depth: 0
-      # Not needed since uv installs python automatically
-      # - uses: actions/setup-python@v5
-      #   with:
-      #     python-version-file: ".python-version"
-      - name: Set up pixi
-        run: curl -fsSL https://pixi.sh/install.sh | bash
-      # Needed for mypy, since the pre-commit hook is run in "system" mode
-      - name: Install dependencies
-        run: |
-          pixi install -e dev
+      - uses: prefix-dev/setup-pixi@v0.5.1
+        with:
+          pixi-version: v0.29.0
+          cache: true
+          environments: dev
       - uses: pre-commit/action@v3.0.1
