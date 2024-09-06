@@ -78,6 +78,12 @@ platforms = ["linux-64"]
 template = { path = ".", editable = true }
 
 [tool.pixi.tasks]
+fmt = "ruff format ."
+lint = "ruff check --fix --show-fixes ."
+ruff = { depends-on = ["fmt", "lint"] }
+test = "pytest"
+hooks = "pre-commit run --all-files"
+mypy = "mypy --install-types --non-interactive"
 
 [tool.pixi.dependencies]
 pandas = "*"

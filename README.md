@@ -128,10 +128,22 @@ Hooks are run on modified files before any commit. To run them manually on all f
 make hooks
 ```
 
+or
+
+```{bash}
+pixi run -e dev hooks
+```
+
 #### Run linter and formatter
 
 ```{bash}
 make ruff
+```
+
+or
+
+```{bash}
+pixi run -e dev ruff
 ```
 
 #### Run tests
@@ -140,8 +152,20 @@ make ruff
 make test
 ```
 
+or
+
+```{bash}
+pixi run -e dev test
+```
+
 #### Run type checker
 
 ```{bash}
 make mypy
+```
+
+or
+
+```{bash}
+pixi run -e dev mypy
 ```
