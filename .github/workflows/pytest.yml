@@ -29,7 +29,7 @@ jobs:
           pixi-version: v0.29.0
           cache: true
           environments: dev
-          manifest-path: pixi.lock
+          manifest-path: pyproject.toml
       - name: Test with pytest
         run: |
           pixi run -e dev pytest
