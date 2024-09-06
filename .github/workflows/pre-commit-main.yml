@@ -20,14 +20,10 @@ jobs:
       # - uses: actions/setup-python@v5
       #   with:
       #     python-version-file: ".python-version"
-      - name: Set up uv
-        run: curl -LsSf https://astral.sh/uv/0.4.3/install.sh | sh
+      - name: Set up pixi
+        run: curl -fsSL https://pixi.sh/install.sh | bash
       # Needed for mypy, since the pre-commit hook is run in "system" mode
       - name: Install dependencies
         run: |
-          uv sync --dev --frozen
-      # Workaround to allow pre-commit to find the venv where dependencies are installed
-      - run: |
-          echo "$PWD/.venv/bin" >> $GITHUB_PATH
-          uv pip install pip
+          pixi install -e dev
       - uses: pre-commit/action@v3.0.1
