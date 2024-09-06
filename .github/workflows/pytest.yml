@@ -30,7 +30,6 @@ jobs:
           cache: true
           run-install: false
       - name: Install dependencies
-        run: pixi install -e dev
+        run: pixi install --frozen -e dev
       - name: Test with pytest
-        run: |
-          pixi run -e dev pytest
+        run: pixi run -e dev pytest

@@ -22,5 +22,5 @@ jobs:
           cache: true
           run-install: false
       - name: Install dependencies
-        run: pixi install -e dev
+        run: pixi install --frozen -e dev
       - uses: pre-commit/action@v3.0.1
