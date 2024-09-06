@@ -33,28 +33,28 @@ Tools:
 
 ### Application
 
-Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/uv/) package manager:
+Install package and pinned dependencies with the [`pixi`](https://docs.astral.sh/uv/) package manager:
 
-1. Install `uv`. See instructions for Windows, Linux or MacOS [here](https://docs.astral.sh/uv/getting-started/installation/).
+1. Install `pixi`. See instructions for Windows, Linux or MacOS [here](https://pixi.sh/dev/).
 
 2. Clone repository
 
 3. Install package and dependencies in a virtual environment:
 
    ```{bash}
-   uv sync
+   pixi install
    ```
 
-4. Run any command or Python script with `uv run`, for instance:
+4. Run any command or Python script with `pixi run`, for instance:
 
    ```{bash}
-   uv run template/main.py
+   pixi run template/main.py
    ```
 
    Alternatively, you can also activate the virtual env and run the scripts normally:
 
    ```{bash}
-   source .venv/bin/activate
+   pixi shell
    ```
 
 ### Library
@@ -67,38 +67,55 @@ pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
 
 ## Setup development environment (Unix)
 
-Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and pre-commit hooks:
+Install [`pixi`](https://pixi.sh/dev/) and pre-commit hooks:
 
 ```{bash}
 make install
 ```
 
-`uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies). It will also install the package in editable mode.
+`pixi` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `pixi.lock`. It will create two environments, `default` and `dev` with the standard and dev dependencies respectively. It will also install the package in editable mode.
+
+The packages installed in each environment can be listed with `pixi list` or `pixi tree`:
+
+```{bash}
+pixi list
+pixi list -e dev
+```
+
+To run commands in the default environment use `pixi run` and to run commands in the `dev` environment use `pixi run -e dev`. You can also activate the environments with `pixi shell` or `pixi shell -e dev`.
+
+More information can be found in the [official documentation](https://pixi.sh/dev/tutorials/python/).
 
 ### Adding new dependencies
 
 Add dependencies with:
 
 ```{bash}
-uv add <PACKAGE>
+pixi add <PACKAGE>
 ```
 
 Add dev dependencies with:
 
 ```{bash}
-uv add --dev <PACKAGE>
+pixi add --feature dev <PACKAGE>
 ```
 
-Remove dependency with:
+Remove dependencies with:
 
 ```{bash}
-uv remove <PACKAGE>
+pixi remove <PACKAGE>
 ```
 
-In all cases `uv` will automatically update the `uv.lock` file and sync the virtual environment. This can also be done manually with:
+If the dependency is not available in conda, we can install the pypi version with:
 
 ```{bash}
-uv sync
+pixi add --pypi <PACKAGE>
+```
+
+In all cases `pixi` will automatically update the `pixi.lock` file and sync the virtual environment. This can also be done manually with:
+
+```{bash}
+pixi install
 ```
 
 ### Tools

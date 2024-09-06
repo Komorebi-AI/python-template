@@ -11,12 +11,6 @@ description = "Librería Python de ejemplo"
 readme = "README.md"
 authors = [{ name = "Komorebi AI", email = "info@komorebi.ai" }]
 dynamic = ["version"]
-dependencies = [
-    "pandas",
-    "fastapi",
-    "uvicorn",
-    "typer-slim",
-]
 
 [project.urls]
 homepage = "https://github.com/Komorebi-AI/python-template"
@@ -76,13 +70,28 @@ xfail_strict = true
 addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
-[tool.uv]
-dev-dependencies = [
-    "pytest",
-    "ruff",
-    "mypy",
-    "pre-commit",
-    "ipykernel",
-]
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64"]
 
+[tool.pixi.pypi-dependencies]
+template = { path = ".", editable = true }
 
+[tool.pixi.tasks]
+
+[tool.pixi.dependencies]
+pandas = ">=2.2.2,<3"
+fastapi = ">=0.113.0,<0.114"
+uvicorn = ">=0.30.6,<0.31"
+typer-slim = ">=0.12.5,<0.13"
+
+[tool.pixi.feature.dev.dependencies]
+pytest = "*"
+ruff = "*"
+mypy = "*"
+pre-commit = "*"
+ipykernel = ">=6.29.5,<7"
+
+[tool.pixi.environments]
+default = { solve-group = "default" }
+dev= { features = ["dev"], solve-group = "default" }

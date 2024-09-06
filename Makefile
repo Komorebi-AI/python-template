@@ -7,31 +7,28 @@ DOCKER_CONTAINER=template
 GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 
-# Install uv, pre-commit hooks and dependencies
-# Note that `uv run` has an implicit `uv sync`, since it will (if necessary):
-# - Download an install Python
-# - Create a virtual environment
-# - Update `uv.lock`
-# - Sync the virtual env, installing and removing dependencies as required
+# Install pixi, dependencies and pre-commit hooks
 install:
-	curl -LsSf https://astral.sh/uv/install.sh | sh
-	uv run pre-commit install
+	curl -fsSL https://pixi.sh/install.sh | bash
+	pixi install
+	pixi install -e dev
+	pixi run -e dev pre-commit install
 
 hooks:
-	uv run pre-commit run --all-files
+	pixi run -e dev pre-commit run --all-files
 
 hooks-update:
-	uv run pre-commit autoupdate
+	pixi run -e dev pre-commit autoupdate
 
 ruff:
-	uv run ruff format .
-	uv run ruff check --fix --show-fixes .
+	pixi run -e dev ruff format .
+	pixi run -e dev ruff check --fix --show-fixes .
 
 test:
-	uv run pytest
+	pixi run -e dev pytest
 
 mypy:
-	uv run mypy --install-types --non-interactive
+	pixi run -e dev mypy --install-types --non-interactive
 
 docker: build run
 
