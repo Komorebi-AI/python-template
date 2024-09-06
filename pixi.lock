@@ -3743,9 +3743,9 @@ packages:
   timestamp: 1725309708460
 - kind: pypi
   name: template
-  version: 1.3.dev11+g5323330.d20240906
+  version: 1.3.dev12+g27636af
   path: .
-  sha256: c767f023af6cbe3e6ebd81836693bedce87131fd835c351b61a5020999f368d8
+  sha256: 746eeb1f5e6ce4c85652fe09a57c561ee21a52d3cb6c63a5cd95704cc768adc4
   requires_python: <3.13,>=3.9
   editable: true
 - kind: conda
