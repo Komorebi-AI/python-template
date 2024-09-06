@@ -80,18 +80,34 @@ template = { path = ".", editable = true }
 [tool.pixi.tasks]
 
 [tool.pixi.dependencies]
-pandas = ">=2.2.2,<3"
-fastapi = ">=0.113.0,<0.114"
-uvicorn = ">=0.30.6,<0.31"
-typer-slim = ">=0.12.5,<0.13"
+pandas = "*"
+fastapi = "*"
+uvicorn = "*"
+typer-slim = "*"
 
 [tool.pixi.feature.dev.dependencies]
 pytest = "*"
 ruff = "*"
 mypy = "*"
 pre-commit = "*"
-ipykernel = ">=6.29.5,<7"
+ipykernel = "*"
+
+[tool.pixi.feature.py39.dependencies]
+python = "3.9.*"
+
+[tool.pixi.feature.py310.dependencies]
+python = "3.10.*"
+
+[tool.pixi.feature.py311.dependencies]
+python = "3.11.*"
+
+[tool.pixi.feature.py312.dependencies]
+python = "3.12.*"
 
 [tool.pixi.environments]
 default = { solve-group = "default" }
-dev= { features = ["dev"], solve-group = "default" }
+dev = { features = ["dev"], solve-group = "default" }
+py39 = ["py39", "dev"]
+py310 = ["py310", "dev"]
+py311 = ["py311", "dev"]
+py312 = ["py312", "dev"]

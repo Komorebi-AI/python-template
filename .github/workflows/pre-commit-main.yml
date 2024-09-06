@@ -21,6 +21,5 @@ jobs:
           pixi-version: v0.29.0
           cache: true
           environments: dev
-      # - name: Install dependencies
-      #   run: pixi install --frozen -e dev
+          activate-environment: true
       - uses: pre-commit/action@v3.0.1
