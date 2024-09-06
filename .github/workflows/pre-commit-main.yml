@@ -20,6 +20,7 @@ jobs:
         with:
           pixi-version: v0.29.0
           cache: true
-          environments: dev
-          manifest-path: pyproject.toml
+          run-install: false
+      - name: Install dependencies
+        run: pixi install -e dev
       - uses: pre-commit/action@v3.0.1
