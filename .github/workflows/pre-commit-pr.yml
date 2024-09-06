@@ -15,13 +15,13 @@ jobs:
         with:
           # required to grab the history of the PR
           fetch-depth: 0
-      - uses: prefix-dev/setup-pixi@v0.5.1
+      - uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.29.0
           cache: true
-          run-install: false
-      - name: Install dependencies
-        run: pixi install --frozen -e dev
+          environments: dev
+      # - name: Install dependencies
+      #   run: pixi install --frozen -e dev
       - uses: pre-commit/action@v3.0.1
         with:
           # Ejecutar solo en ficheros que hayan cambiado https://github.com/pre-commit/action/issues/7
