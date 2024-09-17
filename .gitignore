@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+.pixi/
 .vscode/
 
 # C extensions
@@ -157,3 +158,4 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+node_modules
