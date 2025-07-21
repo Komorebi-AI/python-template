@@ -19,5 +19,5 @@ jobs:
     uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
     with:
       uv-version: 0.8.0
-      pre-commit-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
       debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      pre-commit-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
