@@ -1,3 +1,5 @@
+<!-- markdownlint-disable MD059 -->
+
 # Template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
@@ -23,7 +25,6 @@ Tools:
 
 - [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
 - [ruff](https://docs.astral.sh/ruff/): lint and format Python code
-- [mypy](https://mypy.readthedocs.io/): check types
 - [pytest](https://docs.pytest.org/en/): run unit tests
 - [pre-commit](https://pre-commit.com/): manage pre-commit hooks
 - [prettier](https://prettier.io/): format YAML and Markdown
@@ -59,10 +60,16 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
 
 ### Library
 
-Install a specific version of the package with `pip` or `uv pip`:
+If using `pip` or `uv pip`, a specific version of the package can be installed with:
 
 ```{bash}
 pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
+```
+
+It can also be added to the `requirements.in` or `pyproject.toml`. If using `uv`, it can be added as a dependency with:
+
+```{bash}
+uv add "python-template @ git+https://github.com/Komorebi-AI/python-template@0.1.0"
 ```
 
 ## Setup development environment (Unix)
@@ -95,6 +102,18 @@ Remove dependency with:
 uv remove <PACKAGE>
 ```
 
+Upgrade all dependencies:
+
+```{bash}
+uv lock --upgrade
+```
+
+or a single package:
+
+```{bash}
+uv lock --upgrade-package ruff
+```
+
 In all cases `uv` will automatically update the `uv.lock` file and sync the virtual environment. This can also be done manually with:
 
 ```{bash}
@@ -121,10 +140,4 @@ make ruff
 
 ```{bash}
 make test
-```
-
-#### Run type checker
-
-```{bash}
-make mypy
 ```
