@@ -3,7 +3,6 @@
 # Template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
-[![Checked with mypy](http://www.mypy-lang.org/static/mypy_badge.svg)](http://mypy-lang.org/)
 [![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
 
 Template for Python libraries and applications with Docker packaging. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
