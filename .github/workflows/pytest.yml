@@ -1,10 +1,6 @@
 name: pytest
 
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
   workflow_dispatch:
 
 concurrency:
@@ -12,7 +8,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pytest:
+  call-pytest:
     uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
     with:
       uv-version: 0.8.0
