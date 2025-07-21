@@ -22,4 +22,4 @@ jobs:
     uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
     with:
       uv-version: 0.8.0
-      debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      debug-enabled: ${{ inputs.debug_enabled }}
