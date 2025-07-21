@@ -20,4 +20,4 @@ jobs:
     uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
     with:
       uv-version: 0.8.0
-      debug-enabled: ${{ inputs.debug_enabled }}
+      debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
