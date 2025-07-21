@@ -11,9 +11,7 @@ concurrency:
 
 jobs:
   pre-commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
-        with:
-          uv-version: 0.4.3
-        secrets: inherit
+    uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
+    with:
+      uv-version: 0.4.3
+    secrets: inherit
