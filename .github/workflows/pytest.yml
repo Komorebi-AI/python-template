@@ -15,5 +15,5 @@ jobs:
   pytest:
     uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
     with:
-      uv-version: 0.4.3
+      uv-version: 0.8.0
       secrets: inherit

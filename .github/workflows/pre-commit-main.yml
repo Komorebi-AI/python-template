@@ -13,5 +13,5 @@ jobs:
   pre-commit:
     uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
     with:
-      uv-version: 0.4.3
+      uv-version: 0.8.0
     secrets: inherit
