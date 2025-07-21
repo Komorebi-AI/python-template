@@ -1,9 +1,9 @@
 #!/usr/bin/env python
-from __future__ import annotations
+from __future__ import annotations  # noqa: I001
 
 from importlib.metadata import PackageNotFoundError, version
 
-import typer
+import typer  # type: ignore
 
 try:
     __version__: str | None = version("template")
