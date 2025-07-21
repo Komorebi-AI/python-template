@@ -4,6 +4,12 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: "Run with tmate debugging enabled"
+        required: false
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,3 +20,4 @@ jobs:
     uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
     with:
       uv-version: 0.8.0
+      debug-enabled: ${{ inputs.debug_enabled }}

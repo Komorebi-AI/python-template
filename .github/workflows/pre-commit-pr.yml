@@ -3,6 +3,12 @@ name: pre-commit-pr
 on:
   pull_request:
   workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: "Run with tmate debugging enabled"
+        required: false
+        default: false
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -14,3 +20,4 @@ jobs:
     with:
       uv-version: 0.8.0
       pre-commit-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
+      debug-enabled: ${{ inputs.debug_enabled }}
