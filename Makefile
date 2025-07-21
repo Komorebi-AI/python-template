@@ -23,6 +23,10 @@ hooks:
 hooks-update:
 	uv run pre-commit autoupdate
 
+# Specific packages can be upgrade with `--upgrade-package PKG`
+upgrade:
+	uv lock --upgrade
+
 ruff:
 	uv run ruff format .
 	uv run ruff check --fix --show-fixes .
