@@ -14,4 +14,3 @@ jobs:
     with:
       uv-version: 0.8.0
       pre-commit-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
-    secrets: inherit
