@@ -1,14 +1,10 @@
-name: Pytest
+name: pytest
 
-# Controls when the action will run.
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [main]
   pull_request:
     branches: [main]
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 concurrency:
@@ -16,20 +12,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  default-shell:
-    name: Default shell
-    runs-on: "ubuntu-latest"
-    strategy:
-      matrix:
-        python-version: ["3.9", "3.10", "3.11", "3.12"]
+  pytest:
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
         with:
-          python-version: ${{ matrix.python-version }}
-      - name: Set up uv
-        run: curl -LsSf https://astral.sh/uv/0.4.3/install.sh | sh
-      - name: Test with pytest
-        run: |
-          uv sync --dev --frozen
-          uv run pytest
+          uv-version: 0.4.3
+        secrets: inherit
