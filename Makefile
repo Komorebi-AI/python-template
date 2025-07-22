@@ -6,33 +6,34 @@ DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
 DOCKER_CONTAINER=template
 GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
+RUN=uv run
 
 # Install uv, pre-commit hooks and dependencies
-# Note that `uv run` has an implicit `uv sync`, since it will (if necessary):
+# Note that `$(RUN)` has an implicit `uv sync`, since it will (if necessary):
 # - Download an install Python
 # - Create a virtual environment
 # - Update `uv.lock`
 # - Sync the virtual env, installing and removing dependencies as required
 install:
-	curl -LsSf https://astral.sh/uv/install.sh | sh
-	uv run pre-commit install
+	@command -v uv && echo "uv already installed" || curl -LsSf https://astral.sh/uv/install.sh | sh
+	$(RUN) pre-commit install
 
 hooks:
-	uv run pre-commit run --all-files
+	$(RUN) pre-commit run --all-files
 
 hooks-update:
-	uv run pre-commit autoupdate
+	$(RUN) pre-commit autoupdate
 
 # Specific packages can be upgrade with `--upgrade-package PKG`
 upgrade:
 	uv lock --upgrade
 
 ruff:
-	uv run ruff format .
-	uv run ruff check --fix --show-fixes .
+	$(RUN) ruff format .
+	$(RUN) ruff check --fix --show-fixes .
 
 test:
-	uv run pytest
+	$(RUN) pytest
 
 test-api:
 	uvx --from httpie http GET localhost:6000
