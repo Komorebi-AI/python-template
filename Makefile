@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff test mypy docker build run debug push
+.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -34,8 +34,8 @@ ruff:
 test:
 	uv run pytest
 
-mypy:
-	uv run mypy --install-types --non-interactive
+test-api:
+	uvx --from httpie http GET localhost:6000
 
 docker: build run
 
@@ -45,10 +45,13 @@ build:
 # https://stackoverflow.com/questions/26564825/what-is-the-meaning-of-a-double-dollar-sign-in-bash-makefile
 run:
 	[ "$$(docker ps -a | grep $(DOCKER_CONTAINER))" ] && docker stop $(DOCKER_CONTAINER) && docker rm $(DOCKER_CONTAINER)
-	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 5000:80 $(DOCKER_IMG_NAME)
+	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 6000:80 $(DOCKER_IMG_NAME)
 
 debug:
 	docker run -it $(DOCKER_IMG_NAME) /bin/bash
+
+attach:
+	docker exec -it $(DOCKER_CONTAINER) /bin/bash
 
 push:
 	docker login https://ghcr.io/komorebi-ai -u $(GH_USER) --password-stdin < $(GH_TOKEN_FILE)
