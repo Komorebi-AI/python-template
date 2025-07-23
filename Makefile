@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push
+.PHONY: install hooks hooks-update ruff test test-all test-api docker build run debug attach push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -35,8 +35,15 @@ ruff:
 test:
 	$(RUN) pytest
 
+# For libraries we may want to test in all supported Python versions
+test-all:
+	$(RUN) --python 3.9 --all-extras --with . pytest
+	$(RUN) --python 3.10 --all-extras --with . pytest
+	$(RUN) --python 3.11 --all-extras --with . pytest
+	$(RUN) --python 3.12 --all-extras --with . pytest
+
 test-api:
-	uvx --from httpie http GET localhost:6000
+	uvx --from httpie http localhost:7000
 
 docker: build run
 

@@ -16,6 +16,7 @@ dependencies = [
     "fastapi",
     "uvicorn",
     "typer-slim",
+    "colorlog>=6.9.0",
 ]
 
 [project.urls]

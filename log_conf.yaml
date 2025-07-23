@@ -1,0 +1,78 @@
+version: 1
+disable_existing_loggers: False
+
+formatters:
+  default:
+    (): colorlog.ColoredFormatter
+    format: "%(asctime_log_color)s%(asctime)s%(reset)s - %(name_log_color)s%(name)s%(reset)s - %(log_color)s%(levelname)s%(reset)s - %(message_log_color)s%(message)s%(reset)s"
+    log_colors:
+      DEBUG: white
+      INFO: green
+      WARNING: yellow
+      ERROR: red
+      CRITICAL: bold_red
+    secondary_log_colors:
+      asctime:
+        DEBUG: cyan
+        INFO: cyan
+        WARNING: cyan
+        ERROR: cyan
+        CRITICAL: cyan
+      name:
+        DEBUG: blue
+        INFO: blue
+        WARNING: blue
+        ERROR: blue
+        CRITICAL: blue
+      message:
+        DEBUG: white
+        INFO: white
+        WARNING: white
+        ERROR: white
+        CRITICAL: white
+
+  access:
+    (): colorlog.ColoredFormatter
+    format: "%(asctime_log_color)s%(asctime)s%(reset)s - %(name_log_color)s%(name)s%(reset)s - %(log_color)s%(levelname)s%(reset)s - %(message_log_color)s%(message)s%(reset)s"
+    log_colors:
+      INFO: green
+      ERROR: red
+    secondary_log_colors:
+      asctime:
+        INFO: cyan
+        ERROR: cyan
+      name:
+        INFO: blue
+        ERROR: blue
+      message:
+        INFO: white
+        ERROR: white
+
+handlers:
+  default:
+    class: logging.StreamHandler
+    formatter: default
+    stream: ext://sys.stderr
+
+  access:
+    class: logging.StreamHandler
+    formatter: access
+    stream: ext://sys.stdout
+
+loggers:
+  uvicorn.error:
+    level: INFO
+    handlers:
+      - default
+    propagate: no
+
+  uvicorn.access:
+    level: INFO
+    handlers:
+      - access
+    propagate: no
+
+root:
+  level: WARNING
+  handlers:
+    - default

@@ -1,0 +1,29 @@
+name: pytest-all
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      debug_enabled:
+        type: boolean
+        description: "Run with tmate debugging enabled"
+        required: false
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  pytest-all:
+    strategy:
+      matrix:
+        python-version: ["3.9", "3.10", "3.11", "3.12"]
+    uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
+    with:
+      uv-version: 0.8.0
+      python-version: ${{ matrix.python-version }}
+      debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}

@@ -36,4 +36,4 @@ ENV PATH="/app/.venv/bin:$PATH"
 WORKDIR /app
 
 # Run the FastAPI application by default
-CMD ["uvicorn", "template.api:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["uvicorn", "template.api:app", "--host", "0.0.0.0", "--port", "80", "--log-config", "log_conf.yaml"]

@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-from __future__ import annotations  # noqa: I001
+# Use A | B syntax for Union types in Python 3.9
+from __future__ import annotations
 
 from importlib.metadata import PackageNotFoundError, version
 

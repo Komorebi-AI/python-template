@@ -140,3 +140,23 @@ make ruff
 ```{bash}
 make test
 ```
+
+#### Test API
+
+1. Install `httpie` globally:
+
+   ```{bash}
+   uv tool install httpie
+   ```
+
+2. Send GET request:
+
+   ```{bash}
+   http localhost:7000
+   ```
+
+3. Send POST request:
+
+   ```{bash}
+   http localhost:7000/predict input=5
+   ```
