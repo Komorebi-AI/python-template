@@ -81,9 +81,8 @@ filterwarnings = ["error", "ignore::DeprecationWarning"]
 dev-dependencies = [
     "pytest",
     "ruff",
-    "pre-commit",
+    "prek",
     "ipykernel",
-    "pre-commit-uv>=4.1.4",
 ]
 
 

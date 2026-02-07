@@ -8,7 +8,7 @@ GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 RUN=uv run
 
-# Install uv, pre-commit hooks and dependencies
+# Install uv, prek hooks and dependencies
 # Note that `$(RUN)` has an implicit `uv sync`, since it will (if necessary):
 # - Download an install Python
 # - Create a virtual environment
@@ -16,13 +16,13 @@ RUN=uv run
 # - Sync the virtual env, installing and removing dependencies as required
 install:
 	@command -v uv && echo "uv already installed" || curl -LsSf https://astral.sh/uv/install.sh | sh
-	$(RUN) pre-commit install
+	$(RUN) prek install
 
 hooks:
-	$(RUN) pre-commit run --all-files
+	$(RUN) prek run --all-files
 
 hooks-update:
-	$(RUN) pre-commit autoupdate
+	$(RUN) prek autoupdate
 
 # Specific packages can be upgrade with `--upgrade-package PKG`
 upgrade:

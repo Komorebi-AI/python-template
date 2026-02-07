@@ -3,7 +3,7 @@
 # Template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/pre-commit/pre-commit)
+[![prek](https://img.shields.io/badge/prek-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/j178/prek)
 
 Template for Python libraries and applications with Docker packaging. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
 
@@ -17,7 +17,7 @@ The repository is structured into the following directories:
 
 Conveniently, a set of workflows via Github Actions are already installed:
 
-- `pre-commit`: run pre-commit hooks
+- `prek`: run prek hooks
 - `pytest`: automatically discover and runs tests in `tests/`
 
 Tools:
@@ -25,7 +25,7 @@ Tools:
 - [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
 - [ruff](https://docs.astral.sh/ruff/): lint and format Python code
 - [pytest](https://docs.pytest.org/en/): run unit tests
-- [pre-commit](https://pre-commit.com/): manage pre-commit hooks
+- [prek](https://github.com/j178/prek): manage pre-commit hooks (fast, Rust-based)
 - [prettier](https://prettier.io/): format YAML and Markdown
 - [codespell](https://github.com/codespell-project/codespell): check spelling in source code
 
@@ -73,7 +73,7 @@ uv add "python-template @ git+https://github.com/Komorebi-AI/python-template@0.1
 
 ## Setup development environment (Unix)
 
-Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and pre-commit hooks:
+Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and prek hooks:
 
 ```{bash}
 make install
@@ -121,7 +121,7 @@ uv sync
 
 ### Tools
 
-#### Run pre-commit hooks
+#### Run prek hooks
 
 Hooks are run on modified files before any commit. To run them manually on all files use:
 
