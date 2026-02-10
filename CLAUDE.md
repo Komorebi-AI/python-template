@@ -27,7 +27,7 @@ uv run pytest tests/test_trivial.py::test_print_version
 # Lint and format
 make ruff
 
-# Run prek hooks on all files
+# Run pre-commit hooks on all files
 make hooks
 
 # Run the API locally (port 7000)
