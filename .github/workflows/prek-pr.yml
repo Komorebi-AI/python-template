@@ -1,8 +1,7 @@
-name: pre-commit-main
+name: prek-pr
 
 on:
-  push:
-    branches: [main]
+  pull_request:
   workflow_dispatch:
     inputs:
       debug_enabled:
@@ -16,8 +15,9 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  pre-commit-all-files:
-    uses: Komorebi-AI/github-actions/.github/workflows/pre-commit-uv.yml@main
+  prek:
+    uses: Komorebi-AI/github-actions/.github/workflows/prek.yml@main
     with:
       uv-version: 0.8.0
       debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
+      prek-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}
