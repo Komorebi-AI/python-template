@@ -50,7 +50,6 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
    ```bash
    uv run template
    ```
-   
 
    Alternatively, you can also activate the virtual env and run the scripts normally:
 
@@ -161,4 +160,3 @@ make test
    ```bash
    http localhost:7000/predict input=5
    ```
-
