@@ -6,7 +6,6 @@ from importlib.metadata import PackageNotFoundError, version
 
 import typer  # type: ignore
 
-
 try:
     __version__: str | None = version("template")
 except PackageNotFoundError:
