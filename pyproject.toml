@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "setuptools_scm[toml]>=6.2"]
 build-backend = "setuptools.build_meta"
 
 [project]
-requires-python = ">=3.9,<3.13"
+requires-python = ">=3.12,<3.13"
 name = "template"
 # La versión se obtiene automáticamente de git con `setuptools_scm`
 #version = "0.1.0"
@@ -15,15 +15,16 @@ dependencies = [
     "pandas",
     "fastapi",
     "uvicorn",
-    "typer-slim",
     "colorlog>=6.9.0",
+    "typer-slim",
 ]
 
 [project.urls]
 homepage = "https://github.com/Komorebi-AI/python-template"
 
 [project.scripts]
-main = "template.main:main"
+template = "template.main:main"
+
 
 [tool.setuptools]
 packages = ["template"]
@@ -60,15 +61,6 @@ ignore = ["D100"]
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
 
-[tool.mypy]
-files = "./template"
-strict = true
-warn_unreachable = true
-ignore_missing_imports = true
-warn_return_any = true
-warn_unused_configs = true
-enable_error_code = ["ignore-without-code", "redundant-expr", "truthy-bool"]
-
 [tool.pytest.ini_options]
 minversion = "7"
 testpaths = ["tests"]
@@ -84,5 +76,3 @@ dev = [
     "prek",
     "ipykernel",
 ]
-
-

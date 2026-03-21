@@ -18,6 +18,6 @@ jobs:
   prek:
     uses: Komorebi-AI/github-actions/.github/workflows/prek.yml@main
     with:
-      uv-version: 0.8.0
+      uv-version: 0.10.12
       debug-enabled: ${{ github.event_name == 'workflow_dispatch' && inputs.debug_enabled }}
       prek-args: --color=always --from-ref ${{ github.event.pull_request.base.sha }} --to-ref ${{ github.event.pull_request.head.sha }}

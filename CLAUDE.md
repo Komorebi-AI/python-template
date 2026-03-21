@@ -2,59 +2,58 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
-
-Python template for libraries and applications with Docker packaging. Uses `uv` for dependency management, `ruff` for linting/formatting, and `pytest` for testing.
-
-## Common Commands
+## Build and Development Commands
 
 ```bash
-# Install uv and dependencies
-make install
-
-# Run tests
-make test
-
-# Run tests with optional markers
-uv run pytest --optional
-
-# Run a single test file
-uv run pytest tests/test_trivial.py
-
-# Run a single test
-uv run pytest tests/test_trivial.py::test_print_version
-
-# Lint and format
-make ruff
-
-# Run pre-commit hooks on all files
-make hooks
-
-# Run the API locally (port 7000)
-uv run python template/api.py
-
-# Build and run Docker container
-make docker
+make install      # Install uv and prek hooks
+make test         # Run pytest
+make ruff         # Format and lint with ruff
+make hooks        # Run prek on all files
+make upgrade      # Upgrade all dependencies
 ```
 
-## Architecture
+Run a single test:
+```bash
+uv run pytest tests/test_file.py::test_name -v
+```
 
-- `/template`: Main Python package
-  - `main.py`: CLI entry point using Typer, exposes version via `main` console script
-  - `api.py`: FastAPI application with `/` (version check) and `/predict` endpoints
-- `/tests`: Pytest test suite
-  - `conftest.py`: Custom `--optional` flag for marking optional tests with `@pytest.mark.optional`
+Run tests with optional marker:
+```bash
+uv run pytest --optional
+```
 
-## Code Style
+### API Commands
 
-- Python 3.9-3.12 compatible
-- Use `from __future__ import annotations` for union type syntax (`A | B`)
+Run the API locally:
+```bash
+uv run python template/api.py
+```
+
+Test API endpoint:
+```bash
+make test-api  # or: http localhost:7000
+```
+
+### Docker Commands
+
+```bash
+make docker       # Build and run container
+make build        # Build image only
+make debug        # Run container interactively
+```
+
+## Code Architecture
+
+- `/template` - Main Python package
+  - `main.py` - Entry point with version handling
+  - `api.py` - FastAPI application with `/` and `/predict` endpoints
+- `/tests` - Pytest test files
+- `/data` - Data directory
+
+## Conventions
+
+- Uses `uv` for dependency management (not pip)
+- Run any command with `uv run <command>`
+- Add dependencies: `uv add <package>` or `uv add --dev <package>`
 - Docstrings follow NumPy convention
-- Ruff rules: pycodestyle (E), Pyflakes (F), pyupgrade (UP), flake8-bugbear (B), flake8-simplify (SIM), isort (I), pydocstyle (D)
-- mypy strict mode enabled for the `template` package
-
-## Dependencies
-
-- Add dependencies: `uv add <package>`
-- Add dev dependencies: `uv add --dev <package>`
-- Upgrade all: `uv lock --upgrade`
+- Ruff handles both linting and formatting
