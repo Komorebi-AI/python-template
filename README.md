@@ -82,7 +82,11 @@ make install
 
 `uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies). It will also install the package in editable mode.
 
-If this is a fresh project, `uv.lock` will be generated automatically with the latest versions of the dependencies. Remember to commit it.
+If this is a fresh project created from the template, upgrade all dependencies to their latest versions and commit the updated lock file:
+
+```bash
+make upgrade
+```
 
 ### Adding new dependencies
 
@@ -104,13 +108,7 @@ Remove dependency with:
 uv remove <PACKAGE>
 ```
 
-Upgrade all dependencies:
-
-```bash
-uv lock --upgrade
-```
-
-or a single package:
+Upgrade a package:
 
 ```bash
 uv lock --upgrade-package ruff
