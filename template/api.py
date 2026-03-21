@@ -54,5 +54,9 @@ if __name__ == "__main__":
     port = 7000 if len(sys.argv) < 2 else int(sys.argv[1])
     host = "127.0.0.1" if len(sys.argv) < 3 else sys.argv[2]
     uvicorn.run(
-        "template.api:app", host=host, port=port, reload=True, log_config="log_conf.yaml"
+        "template.api:app",
+        host=host,
+        port=port,
+        reload=True,
+        log_config="log_conf.yaml",
     )

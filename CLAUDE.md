@@ -13,11 +13,13 @@ make upgrade      # Upgrade all dependencies
 ```
 
 Run a single test:
+
 ```bash
 uv run pytest tests/test_file.py::test_name -v
 ```
 
 Run tests with optional marker:
+
 ```bash
 uv run pytest --optional
 ```
@@ -25,11 +27,13 @@ uv run pytest --optional
 ### API Commands
 
 Run the API locally:
+
 ```bash
 uv run python template/api.py
 ```
 
 Test API endpoint:
+
 ```bash
 make test-api  # or: http localhost:7000
 ```
