@@ -1,11 +1,11 @@
 <!-- markdownlint-disable MD059 -->
 
-# Template
+# template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
 [![prek](https://img.shields.io/badge/prek-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/j178/prek)
 
-Template for Python libraries and applications with Docker packaging. The associated development guide can be found [here](https://github.com/Komorebi-AI/docs/blob/main/python_dev.md).
+Librería Python de ejemplo
 
 ## Structure
 
@@ -41,19 +41,20 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
 
 3. Install package and dependencies in a virtual environment:
 
-   ```{bash}
+   ```bash
    uv sync
    ```
 
 4. Run any command or Python script with `uv run`, for instance:
 
-   ```{bash}
-   uv run template/main.py
+   ```bash
+   uv run template
    ```
+   
 
    Alternatively, you can also activate the virtual env and run the scripts normally:
 
-   ```{bash}
+   ```bash
    source .venv/bin/activate
    ```
 
@@ -61,83 +62,85 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
 
 If using `pip` or `uv pip`, a specific version of the package can be installed with:
 
-```{bash}
-pip install git+ssh://git@github.com/Komorebi-AI/template.git@0.1.0
+```bash
+pip install git+ssh://git@github.com/Komorebi-AI/python-template.git@0.1.0
 ```
 
 It can also be added to the `requirements.in` or `pyproject.toml`. If using `uv`, it can be added as a dependency with:
 
-```{bash}
-uv add "python-template @ git+https://github.com/Komorebi-AI/python-template@0.1.0"
+```bash
+uv add "template @ git+https://github.com/Komorebi-AI/python-template@0.1.0"
 ```
 
 ## Setup development environment (Unix)
 
 Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/) and prek hooks:
 
-```{bash}
+```bash
 make install
 ```
 
 `uv` will automatically create a virtual environment with the specified Python version in `.python-version` and install the dependencies from `uv.lock` (both standard and dev dependencies). It will also install the package in editable mode.
 
+If this is a fresh project, `uv.lock` will be generated automatically with the latest versions of the dependencies. Remember to commit it.
+
 ### Adding new dependencies
 
 Add dependencies with:
 
-```{bash}
+```bash
 uv add <PACKAGE>
 ```
 
 Add dev dependencies with:
 
-```{bash}
+```bash
 uv add --dev <PACKAGE>
 ```
 
 Remove dependency with:
 
-```{bash}
+```bash
 uv remove <PACKAGE>
 ```
 
 Upgrade all dependencies:
 
-```{bash}
+```bash
 uv lock --upgrade
 ```
 
 or a single package:
 
-```{bash}
+```bash
 uv lock --upgrade-package ruff
 ```
 
 In all cases `uv` will automatically update the `uv.lock` file and sync the virtual environment. This can also be done manually with:
 
-```{bash}
+```bash
 uv sync
 ```
 
 ### Tools
 
-#### Run prek hooks
+#### Run pre-commit hooks
 
 Hooks are run on modified files before any commit. To run them manually on all files use:
 
-```{bash}
+```bash
 make hooks
 ```
 
 #### Run linter and formatter
 
-```{bash}
+```bash
 make ruff
 ```
 
 #### Run tests
 
-```{bash}
+```bash
 make test
 ```
 
@@ -145,18 +148,19 @@ make test
 
 1. Install `httpie` globally:
 
-   ```{bash}
+   ```bash
    uv tool install httpie
    ```
 
 2. Send GET request:
 
-   ```{bash}
+   ```bash
    http localhost:7000
    ```
 
 3. Send POST request:
 
-   ```{bash}
+   ```bash
    http localhost:7000/predict input=5
    ```
+

@@ -1,9 +1,9 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff test test-all test-api docker build run debug attach push
+.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push repo
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
-DOCKER_CONTAINER=template
+DOCKER_CONTAINER=python-template
 GH_USER=GITHUB_USERNAME
 GH_TOKEN_FILE=GITHUB_TOKEN_PATH
 RUN=uv run
@@ -35,13 +35,6 @@ ruff:
 test:
 	$(RUN) pytest
 
-# For libraries we may want to test in all supported Python versions
-test-all:
-	$(RUN) --python 3.9 --all-extras --with . pytest
-	$(RUN) --python 3.10 --all-extras --with . pytest
-	$(RUN) --python 3.11 --all-extras --with . pytest
-	$(RUN) --python 3.12 --all-extras --with . pytest
-
 test-api:
 	uvx --from httpie http localhost:7000
 
@@ -50,10 +43,9 @@ docker: build run
 build:
 	DOCKER_BUILDKIT=1 docker build -t $(DOCKER_IMG_NAME) .
 
-# https://stackoverflow.com/questions/26564825/what-is-the-meaning-of-a-double-dollar-sign-in-bash-makefile
 run:
 	[ "$$(docker ps -a | grep $(DOCKER_CONTAINER))" ] && docker stop $(DOCKER_CONTAINER) && docker rm $(DOCKER_CONTAINER)
-	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 6000:80 $(DOCKER_IMG_NAME)
+	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 7000:80 $(DOCKER_IMG_NAME)
 
 debug:
 	docker run -it $(DOCKER_IMG_NAME) /bin/bash
@@ -64,3 +56,10 @@ attach:
 push:
 	docker login https://ghcr.io/komorebi-ai -u $(GH_USER) --password-stdin < $(GH_TOKEN_FILE)
 	docker push $(DOCKER_IMG_NAME):latest
+# Remove after initial setup
+repo:
+	git init --initial-branch=main
+	git add .
+	git commit -m "Initial commit"
+	git remote add origin https://github.com/Komorebi-AI/python-template.git
+	git push -u origin main
