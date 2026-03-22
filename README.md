@@ -1,6 +1,6 @@
 <!-- markdownlint-disable MD059 -->
 
-# template
+# Template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
 [![prek](https://img.shields.io/badge/prek-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/j178/prek)

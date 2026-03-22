@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push repo
+.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -56,10 +56,3 @@ attach:
 push:
 	docker login https://ghcr.io/komorebi-ai -u $(GH_USER) --password-stdin < $(GH_TOKEN_FILE)
 	docker push $(DOCKER_IMG_NAME):latest
-# Remove after initial setup
-repo:
-	git init --initial-branch=main
-	git add .
-	git commit -m "Initial commit"
-	git remote add origin https://github.com/Komorebi-AI/python-template.git
-	git push -u origin main
