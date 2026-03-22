@@ -16,7 +16,7 @@ except PackageNotFoundError:
 
 def print_version() -> None:
     """Print package version."""
-    print(f"template version {__version__}")
+    print(f"Template version {__version__}")
 
 
 def main() -> None:
