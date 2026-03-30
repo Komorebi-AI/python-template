@@ -33,9 +33,9 @@ packages = ["template"]
 # Importante crear esta sección vacia para activar el plugin
 
 [tool.uv]
+required-version = ">=0.9.17"
 # Exclude packages published in the last 7 days to mitigate supply chain attacks
 exclude-newer = "7 days"
-required-version = ">=0.9.17"
 
 [tool.ruff]
 line-length = 88
