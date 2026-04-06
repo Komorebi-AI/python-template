@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from importlib.metadata import PackageNotFoundError, version
 
-import typer  # type: ignore
+import typer
 
 try:
     __version__: str | None = version("template")

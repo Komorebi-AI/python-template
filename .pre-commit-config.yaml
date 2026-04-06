@@ -49,3 +49,11 @@ repos:
     rev: 0.10.12
     hooks:
       - id: uv-lock
+  - repo: local
+    hooks:
+      - id: local-ty
+        name: ty check
+        entry: uv run ty check template tests
+        require_serial: true
+        language: unsupported
+        pass_filenames: false
