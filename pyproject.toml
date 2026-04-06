@@ -74,10 +74,14 @@ xfail_strict = true
 addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
+[tool.ty.terminal]
+error-on-warning = true
+
 [dependency-groups]
 dev = [
     "pytest",
     "ruff",
     "prek",
     "ipykernel",
+    "ty",
 ]
