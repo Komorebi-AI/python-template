@@ -43,7 +43,7 @@ def read_root() -> dict[str, str]:
 @app.post("/predict")
 def predict(request: Request) -> Response:
     """Mock prediction endpoint."""
-    return {"output": request.input}
+    return Response(output=request.input)
 
 
 if __name__ == "__main__":
