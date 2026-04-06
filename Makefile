@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff test test-api docker build run debug attach push
+.PHONY: install hooks hooks-update ruff ty test test-api docker build run debug attach push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -31,6 +31,9 @@ upgrade:
 ruff:
 	$(RUN) ruff format .
 	$(RUN) ruff check --fix --show-fixes .
+
+ty:
+	$(RUN) ty check template tests
 
 test:
 	$(RUN) pytest
