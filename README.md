@@ -25,13 +25,12 @@ Tools:
 - [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
 - [ruff](https://docs.astral.sh/ruff/): lint and format Python code
 - [pytest](https://docs.pytest.org/en/): run unit tests
+- [ty](https://github.com/astral-sh/ty): type check Python code
 - [prek](https://github.com/j178/prek): manage pre-commit hooks (fast, Rust-based)
 - [prettier](https://prettier.io/): format YAML and Markdown
 - [codespell](https://github.com/codespell-project/codespell): check spelling in source code
 
 ## Installation
-
-### Application
 
 Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/uv/) package manager:
 
@@ -56,20 +55,6 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
    ```bash
    source .venv/bin/activate
    ```
-
-### Library
-
-If using `pip` or `uv pip`, a specific version of the package can be installed with:
-
-```bash
-pip install git+ssh://git@github.com/Komorebi-AI/python-template.git@0.1.0
-```
-
-It can also be added to the `requirements.in` or `pyproject.toml`. If using `uv`, it can be added as a dependency with:
-
-```bash
-uv add "template @ git+https://github.com/Komorebi-AI/python-template@0.1.0"
-```
 
 ## Setup development environment (Unix)
 
