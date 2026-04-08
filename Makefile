@@ -33,7 +33,7 @@ ruff:
 	$(RUN) ruff check --fix --show-fixes .
 
 ty:
-	$(RUN) ty check template tests
+	$(RUN) ty check python_template tests
 
 test:
 	$(RUN) pytest
