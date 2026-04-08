@@ -53,7 +53,7 @@ repos:
     hooks:
       - id: local-ty
         name: ty check
-        entry: uv run ty check template tests
+        entry: uv run ty check python_template tests
         require_serial: true
         language: unsupported
         pass_filenames: false

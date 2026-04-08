@@ -1,17 +1,17 @@
 <!-- markdownlint-disable MD059 -->
 
-# Template
+# Python template
 
 ![testing workflow](https://github.com/Komorebi-AI/python-template/actions/workflows/pytest.yml/badge.svg)
 [![prek](https://img.shields.io/badge/prek-enabled-brightgreen?logo=pre-commit&logoColor=white)](https://github.com/j178/prek)
 
-Librería Python de ejemplo
+Aplicación Python de ejemplo
 
 ## Structure
 
 The repository is structured into the following directories:
 
-- `/template`: Python source code
+- `/python_template`: Python source code
 - `/tests`: Python code for testing via pytest
 - `/data`: data folder
 
@@ -47,7 +47,7 @@ Install package and pinned dependencies with the [`uv`](https://docs.astral.sh/u
 4. Run any command or Python script with `uv run`, for instance:
 
    ```bash
-   uv run template
+   uv run python_template/main.py
    ```
 
    Alternatively, you can also activate the virtual env and run the scripts normally:
@@ -118,6 +118,12 @@ make hooks
 
 ```bash
 make ruff
+```
+
+#### Run type checker
+
+```bash
+make ty
 ```
 
 #### Run tests

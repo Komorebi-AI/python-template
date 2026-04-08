@@ -6,7 +6,7 @@ import logging
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from template.main import __version__
+from python_template.main import __version__
 
 logger = logging.getLogger(__name__)
 
@@ -37,7 +37,7 @@ def read_root() -> dict[str, str]:
     logger.error("ERROR")
     logger.critical("CRITICAL")
 
-    return {"template-api": f"version {__version__}"}
+    return {"python_template-api": f"version {__version__}"}
 
 
 @app.post("/predict")
@@ -54,7 +54,7 @@ if __name__ == "__main__":
     port = 7000 if len(sys.argv) < 2 else int(sys.argv[1])
     host = "127.0.0.1" if len(sys.argv) < 3 else sys.argv[2]
     uvicorn.run(
-        "template.api:app",
+        "python_template.api:app",
         host=host,
         port=port,
         reload=True,

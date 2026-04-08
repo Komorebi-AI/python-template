@@ -7,7 +7,7 @@ from importlib.metadata import PackageNotFoundError, version
 import typer
 
 try:
-    __version__: str | None = version("template")
+    __version__: str | None = version("python_template")
 except PackageNotFoundError:
     # package is not installed
     __version__ = None
@@ -16,7 +16,7 @@ except PackageNotFoundError:
 
 def print_version() -> None:
     """Print package version."""
-    print(f"Template version {__version__}")
+    print(f"Python template version {__version__}")
 
 
 def main() -> None:
