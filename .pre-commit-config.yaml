@@ -57,3 +57,9 @@ repos:
         require_serial: true
         language: unsupported
         pass_filenames: false
+      - id: deptry
+        name: deptry
+        entry: uv run deptry .
+        language: unsupported
+        always_run: true
+        pass_filenames: false
