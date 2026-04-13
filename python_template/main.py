@@ -11,7 +11,6 @@ try:
 except PackageNotFoundError:
     # package is not installed
     __version__ = None
-    pass
 
 
 def print_version() -> None:
