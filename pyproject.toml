@@ -12,11 +12,11 @@ readme = "README.md"
 authors = [{ name = "Komorebi AI", email = "info@komorebi.ai" }]
 dynamic = ["version"]
 dependencies = [
-    "pandas",
     "fastapi",
+    "pydantic",
     "uvicorn",
     "colorlog>=6.9.0",
-    "typer-slim",
+    "typer",
 ]
 
 [project.urls]
@@ -54,14 +54,34 @@ select = [
     "C404",  # flake8-comprehensions: unnecessary-list-comprehension-dict
     "C405",  # flake8-comprehensions: unnecessary-literal-set
     "W605",  # pycodestyle: invalid-escape-sequence
+    "S",  # flake8-bandit (security)
+    "RUF",  # ruff-specific rules
+    "PT",  # flake8-pytest-style
+    "A",  # flake8-builtins (no builtin shadowing)
+    "PERF",  # perflint (performance anti-patterns)
+    "N",  # pep8-naming
+    "RET501",  # flake8-return: unnecessary-return-none
+    "RET502",  # flake8-return: implicit-return-value
+    "RET503",  # flake8-return: implicit-return
+    "RET504",  # flake8-return: unnecessary-assign
+    "PIE",  # flake8-pie
+    "LOG",  # flake8-logging
+    "NPY",  # numpy-specific rules
+    "PD",  # pandas-vet
+    "ISC001",  # flake8-implicit-str-concat: single-line implicit string concatenation
+    "TRY",  # tryceratops (exception handling best practices)
+    "PLE",  # pylint errors
+    "PLW",  # pylint warnings
+    "PLC",  # pylint convention
+    "FAST",  # fastapi
 ]
 
 # Ignore D100 Missing docstring in public module
-ignore = ["D100"]
+ignore = ["D100", "TRY003", "TRY300", "RUF001", "RUF005", "PD010", "LOG015"]
 [tool.ruff.lint.per-file-ignores]
 # Also ignore `D104` in all `__init__.py` files.
 "__init__.py" = ["D104"]
-"tests/*.py" = ["D"]
+"tests/*.py" = ["D", "S101"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "numpy"
@@ -74,6 +94,10 @@ xfail_strict = true
 addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
+[tool.deptry]
+# colorlog is used in log_conf.yaml (not scanned by deptry)
+per_rule_ignores = {"DEP002" = ["colorlog"]}
+
 [tool.ty.terminal]
 error-on-warning = true
 
@@ -84,4 +108,5 @@ dev = [
     "prek",
     "ipykernel",
     "ty",
+    "deptry>=0.25",
 ]
