@@ -76,8 +76,25 @@ select = [
     "FAST",  # fastapi
 ]
 
-# Ignore D100 Missing docstring in public module
-ignore = ["D100", "TRY003", "TRY300", "RUF001", "RUF005", "PD010", "LOG015"]
+ignore = [
+    "B028",    # no-explicit-stacklevel
+    "D100",    # undocumented-public-module
+    "LOG015",  # root-logger-call (fine for scripts/apps)
+    "N803",    # invalid-argument-name
+    "N806",    # non-lowercase-variable-in-function
+    "PD010",   # pandas-use-of-dot-pivot-or-unstack
+    "PERF401", # manual-list-comprehension
+    "PLC0415", # import-outside-top-level
+    "RET504",  # unnecessary-assign
+    "RUF001",  # ambiguous-unicode-character-string
+    "RUF005",  # collection-literal-concatenation
+    "S603",    # subprocess-without-shell-equals-true
+    "S607",    # start-process-with-partial-path
+    "SIM118",  # in-dict-keys
+    "TRY003",  # raise-vanilla-args
+    "TRY300",  # try-consider-else
+    "TRY400",  # error-instead-of-exception
+]
 [tool.ruff.lint.per-file-ignores]
 # Also ignore `D104` in all `__init__.py` files.
 "__init__.py" = ["D104"]
