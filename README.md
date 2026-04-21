@@ -27,6 +27,7 @@ Tools:
 - [pytest](https://docs.pytest.org/en/): run unit tests
 - [ty](https://github.com/astral-sh/ty): type check Python code
 - [prek](https://github.com/j178/prek): manage pre-commit hooks (fast, Rust-based)
+- [sync-with-uv](https://github.com/tsvikas/sync-with-uv): keep pre-commit hook `rev` pins in sync with `uv.lock`
 - [prettier](https://prettier.io/): format YAML and Markdown
 - [codespell](https://github.com/codespell-project/codespell): check spelling in source code
 
