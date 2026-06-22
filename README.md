@@ -20,6 +20,8 @@ Conveniently, a set of workflows via Github Actions are already installed:
 - `prek`: run prek hooks
 - `pytest`: automatically discover and runs tests in `tests/`
 
+Additionally, [Dependabot](https://docs.github.com/code-security/dependabot) is configured to open PRs weekly that keep the GitHub Actions used in these workflows up to date.
+
 Tools:
 
 - [uv](https://docs.astral.sh/uv/): manage dependencies, Python versions and virtual environments
