@@ -16,6 +16,8 @@ dependencies = [
     "pydantic",
     "uvicorn",
     "colorlog>=6.9.0",
+    # uvicorn needs pyyaml to load the YAML log config (log_conf.yaml)
+    "pyyaml",
     "typer",
 ]
 
@@ -112,8 +114,9 @@ addopts = ["-ra", "--strict-config", "--strict-markers"]
 filterwarnings = ["error", "ignore::DeprecationWarning"]
 
 [tool.deptry]
-# colorlog is used in log_conf.yaml (not scanned by deptry)
-per_rule_ignores = {"DEP002" = ["colorlog"]}
+# colorlog is used in log_conf.yaml (not scanned by deptry); pyyaml is used
+# by uvicorn to load log_conf.yaml
+per_rule_ignores = {"DEP002" = ["colorlog", "pyyaml"]}
 
 [tool.ty.terminal]
 error-on-warning = true

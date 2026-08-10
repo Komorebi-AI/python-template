@@ -1,0 +1,37 @@
+name: docker
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      # Reuses the Makefile targets so the docker commands live in one place
+      # and CI validates the same entry points developers use.
+      - name: Build image
+        run: make build
+
+      - name: Run container
+        run: make run
+
+      # Catches images that build but cannot start (missing runtime deps,
+      # broken CMD...). Port 7000 matches the Makefile run target.
+      - name: Smoke test (API responds on /health)
+        run: |
+          timeout 30 bash -c 'until curl -sf http://localhost:7000/health > /dev/null; do sleep 1; done'
+          curl -sf http://localhost:7000/health
+
+      - name: Container logs
+        if: always()
+        run: make logs || true

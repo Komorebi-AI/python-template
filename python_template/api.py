@@ -40,6 +40,16 @@ def read_root() -> dict[str, str]:
     return {"python_template-api": f"version {__version__}"}
 
 
+@app.get("/health")
+def health() -> dict[str, str]:
+    """Health check for container orchestration and monitoring.
+
+    Stable endpoint: keep it when replacing the example endpoints below,
+    since Docker healthchecks and CI smoke tests rely on it.
+    """
+    return {"status": "ok"}
+
+
 @app.post("/predict")
 def predict(request: Request) -> Response:
     """Mock prediction endpoint."""
