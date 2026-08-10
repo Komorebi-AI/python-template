@@ -1,5 +1,5 @@
 .ONESHELL:
-.PHONY: install hooks hooks-update ruff ty test test-api docker build run debug attach push
+.PHONY: install hooks hooks-update ruff ty test test-api docker build run logs debug attach push
 
 SHELL=/bin/bash
 DOCKER_IMG_NAME=ghcr.io/komorebi-ai/python-template
@@ -49,6 +49,9 @@ build:
 run:
 	[ "$$(docker ps -a | grep $(DOCKER_CONTAINER))" ] && docker stop $(DOCKER_CONTAINER) && docker rm $(DOCKER_CONTAINER)
 	docker run -d --restart=unless-stopped --name $(DOCKER_CONTAINER) -p 7000:80 $(DOCKER_IMG_NAME)
+
+logs:
+	docker logs $(DOCKER_CONTAINER)
 
 debug:
 	docker run -it $(DOCKER_IMG_NAME) /bin/bash
