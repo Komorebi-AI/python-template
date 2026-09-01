@@ -15,7 +15,7 @@ jobs:
   docker:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@v6
 
       # Reuses the Makefile targets so the docker commands live in one place
       # and CI validates the same entry points developers use.
