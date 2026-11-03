@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   security-updates:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v7
         with:
@@ -21,4 +21,4 @@ jobs:
           app-id: ${{ secrets.SECURITY_APP_ID }}
           private-key: ${{ secrets.SECURITY_APP_PRIVATE_KEY }}
           pr-title: "security: upgrade vulnerable dependencies"
-          uv-version: 0.13.6
+          uv-version: 0.13.7
