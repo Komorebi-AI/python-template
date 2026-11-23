@@ -1,0 +1,6 @@
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        "Komorebi-AI/*": ref-pin
+        "*": hash-pin

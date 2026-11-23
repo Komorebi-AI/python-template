@@ -32,6 +32,7 @@ Tools:
 - [sync-with-uv](https://github.com/tsvikas/sync-with-uv): keep pre-commit hook `rev` pins in sync with `uv.lock`
 - [prettier](https://prettier.io/): format YAML and Markdown
 - [codespell](https://github.com/codespell-project/codespell): check spelling in source code
+- [zizmor](https://docs.zizmor.sh/): find security issues in GitHub Actions workflows (configured in `.github/zizmor.yml`: third-party actions must be pinned to a commit SHA, `Komorebi-AI/*` may use branch or tag refs)
 
 ## Installation
 
