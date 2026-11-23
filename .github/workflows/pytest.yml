@@ -19,6 +19,8 @@ concurrency:
 
 jobs:
   pytest:
+    permissions:
+      contents: read
     uses: Komorebi-AI/github-actions/.github/workflows/pytest-uv.yml@main
     with:
       uv-version: 0.13.9
